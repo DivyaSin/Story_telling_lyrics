@@ -26,7 +26,7 @@ pronunciationDictionary = nltk.corpus.cmudict.dict()
 # with open(file_name, 'w') as f:
 #     f.writelines(file_lines) 
 
-corpus_root = '/Users/divyasingh/Desktop/pywords-master/words/corpus'
+corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
 
 wordlists = PlaintextCorpusReader(corpus_root, '.*')
 
@@ -98,6 +98,7 @@ def qualityOfRhyme( p1, p2 ):
         try:
             if p == p2[i]:
                 quality += 1
+
             if p != p2[i]:
                 break
         except IndexError:
@@ -118,18 +119,72 @@ def word_rhyme_candidates( word ):
 
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
-            quality = qualityOfRhyme( pronunciation, rhyme_pronunciation )
+            quality = qualityOfRhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
+    # print candidates
     candidates.sort()
+    print "????????????????????????????????????????????????????"
+    # print candidates
     candidates.reverse()
+    print "####################################################"
+    # print candidates
+
+
+
     # best_quality = candidates[0][0]
     # worst_quality = best_quality - 5
     # candidates = [ candidate for q, candidate in candidates if q >= worst_quality ]
-
+    # print word
+    # w = list(word)
+    # w.reverse()
+    # print w
+    # the_vowel = ["a","e","i","o","u"]
     candidates = [ candidate for q, candidate in candidates ]
+    # for cs in cs:
+    #     findHighPriority(cs, word)
+
+    # cd = [ candidate for q, candidate in candidates ]
+    p2 = list(copy.deepcopy(word))
+    p2.reverse()
+    ls=[]
+
+    for candidate in candidates:
+        # print "$$$$$$$$$$$$$$$$$$$$$$$$"
+        # print candidate
+        p1 = list(copy.deepcopy(candidate))
+        p1.reverse()
+        # print "Words are:"
+        # print p1
+        # print p2
+        if p1 == p2:
+            return 0
+        quality = 0
+        sameVowelFound = False
+        for i, p in enumerate(p1):
+            try:
+                if p == p2[i]:
+                    # print p
+                    # print p2[i]
+                    quality += 1
+                    if p in ('a', 'e', 'i', 'o', 'u') and (not sameVowelFound):
+                        quality += 1
+                        sameVowelFound = True
+                    # print quality
+                else:
+                    break  
+            except IndexError:
+                break
+        if quality > 0:
+            ls.append( (quality, candidate) )
+
+    # print "##############################"
+    ls.sort()
+    ls.reverse()
+    # print ls
+    new_candidates = [ ls for q, ls in ls ]
     # print candidates
-    return candidates
+    return new_candidates
 
 def get_rhyme( sentence ):
     target_syllables = syllables.sentence_syllables( sentence )
@@ -204,5 +259,4 @@ def generate_lyrics( string ):
             pass
     print "################"
 
-generate_lyrics("With Enemy Priest, Eagle Knight was in love. Eagle Knight decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Virgin. Tlatoani decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Slave. Prince decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Priest. Enemy Priest invited Virgin to walk by Texcoco Lake. Both enjoyed the sunset. Without being noticed, Eagle Knight followed Enemy Priest. To find Slave, Eagle Knight decided to start a search. After hard work and difficult moments Slave was finally found.")
-
+generate_lyrics("moon.")
