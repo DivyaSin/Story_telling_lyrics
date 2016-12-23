@@ -98,57 +98,17 @@ def qualityOfRhyme( p1, p2 ):
         try:
             if p == p2[i]:
                 quality += 1
-
             if p != p2[i]:
                 break
         except IndexError:
             break
     return quality
     
-def word_rhyme_candidates( word ):
-    word = word.lower()
-    candidates = []
-    try:
-        pronunciations = pronunciationDictionary[word]
-    except KeyError:
-        return word_rhyme_candidates(word[-1])
-
-    if pronunciations == []:
-        print "No pronunciations"
-        return []
-
-    for pronunciation in pronunciations:
-        for rhyme_word, rhyme_pronunciation in rhyme_entries:
-            quality = qualityOfRhyme(pronunciation, rhyme_pronunciation)
-            if quality > 0:
-                candidates.append( (quality, rhyme_word) )
-    # print candidates
-    candidates.sort()
-    print "????????????????????????????????????????????????????"
-    # print candidates
-    candidates.reverse()
-    print "####################################################"
-    # print candidates
-
-
-
-    # best_quality = candidates[0][0]
-    # worst_quality = best_quality - 5
-    # candidates = [ candidate for q, candidate in candidates if q >= worst_quality ]
-    # print word
-    # w = list(word)
-    # w.reverse()
-    # print w
-    # the_vowel = ["a","e","i","o","u"]
-    candidates = [ candidate for q, candidate in candidates ]
-    # for cs in cs:
-    #     findHighPriority(cs, word)
-
-    # cd = [ candidate for q, candidate in candidates ]
+def findHighPriority(candidates, word):
     p2 = list(copy.deepcopy(word))
     p2.reverse()
-    ls=[]
 
+    new_candidates = []
     for candidate in candidates:
         # print "$$$$$$$$$$$$$$$$$$$$$$$$"
         # print candidate
@@ -176,20 +136,64 @@ def word_rhyme_candidates( word ):
             except IndexError:
                 break
         if quality > 0:
-            ls.append( (quality, candidate) )
+            new_candidates.append( (quality, candidate) )
 
-    # print "##############################"
-    ls.sort()
-    ls.reverse()
-    # print ls
-    new_candidates = [ ls for q, ls in ls ]
+    new_candidates.sort()
+    new_candidates.reverse()
+
+    new_candidates = [ candidate for quality, candidate in new_candidates ]
     # print candidates
     return new_candidates
 
+def word_rhyme_candidates( word ):
+    word = word.lower()
+    candidates = []
+    try:
+        pronunciations = pronunciationDictionary[word]
+    except KeyError:
+        return word_rhyme_candidates(word[-1])
+
+    if pronunciations == []:
+        print "No pronunciations"
+        return []
+
+    for pronunciation in pronunciations:
+        for rhyme_word, rhyme_pronunciation in rhyme_entries:
+            quality = qualityOfRhyme(pronunciation, rhyme_pronunciation)
+            if quality > 0:
+                candidates.append( (quality, rhyme_word) )
+
+    candidates.sort()
+
+    candidates.reverse()
+
+    # best_quality = candidates[0][0]
+    # worst_quality = best_quality - 5
+    # candidates = [ candidate for q, candidate in candidates if q >= worst_quality ]
+
+    candidates = [ candidate for q, candidate in candidates ]
+
+    # print candidates
+
+    new_candidates = findHighPriority(candidates, word)
+
+    if not new_candidates:
+        print "Candidates taken"
+        print candidates
+        return candidates
+
+    else:
+        print "New_candidates taken"
+        print new_candidates
+        return new_candidates
+
 def get_rhyme( sentence ):
+    print sentence
     target_syllables = syllables.sentence_syllables( sentence )
     tokens = nltk.word_tokenize(sentence) 
     rhymes = word_rhyme_candidates(last_word(tokens))
+    print "mmmmmmmmmmmmmmmmmmmm"
+    print rhymes
     candidate_sentence = []
             
     # if len(tokens) == 1:
@@ -259,4 +263,10 @@ def generate_lyrics( string ):
             pass
     print "################"
 
-generate_lyrics("moon.")
+generate_lyrics("With Enemy Priest, Eagle Knight was in love. Eagle Knight decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Virgin. Tlatoani decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Slave. Prince decided to go shopping to the Tlatelolco Market. Enemy Priest felt a strong attraction for Priest. Enemy Priest invited Virgin to walk by Texcoco Lake. Both enjoyed the sunset. Without being noticed, Eagle Knight followed Enemy Priest. To find Slave, Eagle Knight decided to start a search. After hard work and difficult moments Slave was finally found.")
+
+
+
+
+
+
