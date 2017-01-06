@@ -345,9 +345,11 @@ def get_rhyme(sentence):
             sentiment_score = 0
         else:
             POS_list = sentiment_dictionary.get('POS', None)
+            # get sentiment_score
             print POS_list
     else:
         PRE_list = sentiment_dictionary.get('POS')
+        # get sentiment_score
         print PRE_list
 
     # mapping of sentiments to be done
