@@ -277,22 +277,38 @@ def get_rhyme(sentence):
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
     
     close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n ] 
-    # closest_sentences = []
-    # for line in close_sentences:
-    #     print line
-    #     response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=" + line,
-    #     headers={
-    #     "X-Mashape-Key": "MPPiWZYJAhmshW2madDJsYEkXdClp1WdjRtjsniiWtmhiaLSDR",
-    #     "Accept": "application/json"
-    #         }
-    #         )
-    #     t = response.body
-    #     keywords = t['keywords']
-    #     score = 0
-    #     for keyword in keywords:
-    #         score = score + keyword['score']
-    #         closest_sentences.append((score, line))
-    # print closest_sentences 
+    closest_sentences = []
+    for line in close_sentences:
+        # print line
+        response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=" + line,
+        headers={
+        "X-Mashape-Key": "ur8eDH4fVCmshtOozaz1zoWSjS79p1U8IGljsnA2aJAoTuh4Fc",
+        "Accept": "application/json"
+            }
+            )
+        t = response.body
+        keywords = t['keywords']
+        score = 0
+        for keyword in keywords:
+            score = score + keyword['score']
+        if 0.05 < score < 0.5:
+            score = +1
+        elif 0.5 < score < 2.0:
+            score = +2
+        elif score > 2.0:
+            score = +3
+        elif -0.05 < score < 0.5:
+            score = 0
+        elif -0.5 < score < -0.05:
+            score = -1
+        elif -0.5 < score < -2.0:
+            score = -2
+        else:
+            score = -3
+            
+        closest_sentences.append((score, line))
+    print closest_sentences 
+
     max_similarity_score = 0
     sentiment_dictionary = []
     for dictionary in actions_list:
