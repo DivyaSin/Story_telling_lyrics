@@ -243,7 +243,6 @@ def get_rhyme(sentence):
         syllable_sentences.append( (sumOfSyllables, " ".join(sentence)) )
     syllable_sentences.sort()
     syllable_sentences.reverse()
-    
     if len( syllable_sentences ) == 0:
         if len( rhymes ) > 0: 
             # get synonyms of rhyme
@@ -311,7 +310,7 @@ def get_rhyme(sentence):
                     break
             pre_number = PRE_list[i+1]
             print "PRE intensity"
-            print pre_pos_neg + pre_number
+            story_score = pre_pos_neg + pre_number
             print PRE_list
     else:
         POS_list = sentiment_dictionary.get('POS')
@@ -323,10 +322,16 @@ def get_rhyme(sentence):
                 break
         pos_number = POS_list[i+1]
         print "POS intensity"
-        print pos_pos_neg + pos_number
+        story_score = pos_pos_neg + pos_number
         print POS_list
     # mapping of sentiments to be done
-    return random.choice(close_sentences) # need to fix this
+    if story_score > 0:
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
+    elif story_score < 0:
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
+    else:
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0]       
+    return random.choice(rhyme_sentences) # need to fix this
 
 def generate_lyrics( string ):
     pat = ('\. +(?=[A-Z ])')
