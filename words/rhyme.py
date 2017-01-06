@@ -276,7 +276,7 @@ def get_rhyme(sentence):
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
     
-    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n <= close_number+1 ] 
+    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n ] 
     # closest_sentences = []
     # for line in close_sentences:
     #     print line
@@ -340,17 +340,34 @@ def get_rhyme(sentence):
     #                     sentiment_dictionary = dictionary
     #                     break
     # print "&&&&&"
-    if not sentiment_dictionary.get('POS', None):
-        if not sentiment_dictionary.get('PRE', None):
+
+    if not sentiment_dictionary.get('POS'):
+        if not sentiment_dictionary.get('PRE'):
             sentiment_score = 0
         else:
-            POS_list = sentiment_dictionary.get('POS', None)
+            PRE_list = sentiment_dictionary.get('PRE')
             # get sentiment_score
-            print POS_list
+            for symbol in PRE_list:
+                if symbol == "-" or symbol == "+":
+                    pre_pos_neg = symbol
+                    i = PRE_list.index(pre_pos_neg)
+                    break
+            pre_number = PRE_list[i+1]
+            print "PRE intensity"
+            print pre_pos_neg + pre_number
+            print PRE_list
     else:
-        PRE_list = sentiment_dictionary.get('POS')
+        POS_list = sentiment_dictionary.get('POS')
         # get sentiment_score
-        print PRE_list
+        for symbol in POS_list:
+            if symbol == "-" or symbol == "+":
+                pos_pos_neg = symbol
+                i = POS_list.index(pos_pos_neg) 
+                break
+        pos_number = POS_list[i+1]
+        print "POS intensity"
+        print pos_pos_neg + pos_number
+        print POS_list
 
     # mapping of sentiments to be done
     return random.choice(close_sentences) # need to fix this
@@ -396,7 +413,7 @@ def generate_lyrics( string ):
             pass
     print "################"
 
-generate_lyrics("Artist was a very ambitious person. Artist wanted power and money in an easy way.")
+generate_lyrics("Artist was an ambitious person. Artist wanted power and money in an easy way.")
 
 
 
