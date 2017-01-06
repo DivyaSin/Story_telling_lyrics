@@ -18,11 +18,9 @@ from difflib import SequenceMatcher
 from fuzzywuzzy import fuzz
 
 rhyme_entries = nltk.corpus.cmudict.entries()
-
 pronunciationDictionary = nltk.corpus.cmudict.dict() 
 
 action_keys = ['ACT', 'PRE', 'POS', 'TEN', 'TEXT']
-
 action_dictionary = {}
 actions_list = []
 
@@ -80,7 +78,6 @@ with open("actions.txt") as actions_file:
 #     f.writelines(file_lines) 
 
 corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
-
 wordlists = PlaintextCorpusReader(corpus_root, '.*')
 
 # print wordlists.fileids()
@@ -111,7 +108,6 @@ mega_sentences = ( wordlists.sents('new_lyrics_reversed.txt') )
 #                 nltk.corpus.gutenberg.sents("austen-persuasion.txt") + 
 #                 nltk.corpus.gutenberg.sents("shakespeare-hamlet.txt") + 
 #                 nltk.corpus.gutenberg.sents("shakespeare-macbeth.txt") ) 
-
 
 last_word_sentences = defaultdict(list)
 
@@ -162,9 +158,7 @@ def qualityOfRhyme( p1, p2 ):
 def findHighPriority(candidates, word):
     p2 = list(copy.deepcopy(word))
     p2.reverse()
-
     new_candidates = []
-
     for candidate in candidates:
         p1 = list(copy.deepcopy(candidate))
         p1.reverse()
@@ -193,10 +187,8 @@ def findHighPriority(candidates, word):
                 break
         if quality > 0:
             new_candidates.append( (quality, candidate) )
-
     new_candidates.sort()
     new_candidates.reverse()
-
     new_candidates = [ candidate for quality, candidate in new_candidates ]
     # print candidates
     return new_candidates
@@ -208,17 +200,14 @@ def word_rhyme_candidates( word ):
         pronunciations = pronunciationDictionary[word]
     except KeyError:
         return word_rhyme_candidates(word[-1])
-
     if pronunciations == []:
         print "No pronunciations"
         return []
-
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
             quality = qualityOfRhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
-
     candidates.sort()
     candidates.reverse()
     # best_quality = candidates[0][0]
@@ -237,13 +226,6 @@ def word_rhyme_candidates( word ):
         # print new_candidates
         return new_candidates
 
-# def search(values, searchFor):
-#     for k in values:
-#         for v in values[k]:
-#             if searchFor in v:
-#                 return k
-#     return None
-
 def get_rhyme(sentence):
     pattern = sentence
     # post_tag_list = nltk.pos_tag(sentence.split())
@@ -253,16 +235,12 @@ def get_rhyme(sentence):
     candidate_sentence = []
     # if len(tokens) == 1:
     #     return ", ".join(rhymes[:12])
-
     for rhyme in rhymes:
         candidate_sentence += candidate_sentences( rhyme )
-
     syllable_sentences = []
-
     for sentence in candidate_sentence:
         sumOfSyllables = sum( [ syllables.syllables(word) for word in sentence ] )
         syllable_sentences.append( (sumOfSyllables, " ".join(sentence)) )
-
     syllable_sentences.sort()
     syllable_sentences.reverse()
     
@@ -272,10 +250,8 @@ def get_rhyme(sentence):
             return ", ".join(rhymes[:12])
         else:
             return "Oho ho ho ho ho"
-    
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
-    
     close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n ] 
     closest_sentences = []
     for line in close_sentences:
@@ -305,7 +281,6 @@ def get_rhyme(sentence):
             score = -2
         else:
             score = -3
-            
         closest_sentences.append((score, line))
     print closest_sentences 
 
@@ -322,41 +297,7 @@ def get_rhyme(sentence):
             if similarity_score > max_similarity_score:
                 max_similarity_score = similarity_score
                 sentiment_dictionary = dictionary
-
     print sentiment_dictionary
-    # dictionary = (dictionary for dictionary in actions_list if dictionary["TEXT"] == pattern).next()
-    # print dictionary
-
-    # match = re.findall()
-    # print post_tag_list
-    # for (word, tag) in post_tag_list:
-    #     if tag == "VBP":
-    #         search_word = word
-    #         break
-    #     else:
-    #         if tag == "JJ":
-    #             search_word = word
-    #             break
-    #         if tag == "NN":
-    #             search_word = word
-    #             continue
-    
-
-    # print search_word
-
-    # for dictionary in actions_list:
-    #     for v in dictionary["TEXT"]:
-    #         if isinstance(v, str):
-    #             if search_word in v:
-    #                 sentiment_dictionary = dictionary
-    #                 break
-    #         else:
-    #             for sentence in v:
-    #                 if search_word.strip(".") in sentence:
-    #                     sentiment_dictionary = dictionary
-    #                     break
-    # print "&&&&&"
-
     if not sentiment_dictionary.get('POS'):
         if not sentiment_dictionary.get('PRE'):
             sentiment_score = 0
@@ -384,10 +325,8 @@ def get_rhyme(sentence):
         print "POS intensity"
         print pos_pos_neg + pos_number
         print POS_list
-
     # mapping of sentiments to be done
     return random.choice(close_sentences) # need to fix this
-
 
 def generate_lyrics( string ):
     pat = ('\. +(?=[A-Z ])')
@@ -400,11 +339,9 @@ def generate_lyrics( string ):
     print ""
     print "#################"
     print 
-    
     text_file = open('story.txt', 'w')  
     text_file.write(text)
     text_file.close()
-
     with open ("story.txt") as f:
         lines = f.readlines()
         line_no = 0
@@ -417,10 +354,8 @@ def generate_lyrics( string ):
 
     print "#### LYRICS ####"
     print ""
- 
     for i, v in enumerate(rhyme_lines):
         lines.insert(2*i+1, v)
-
     for i,j in enumerate(lines):
         print j.strip("\n")
         if (i in [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47]):
@@ -428,7 +363,6 @@ def generate_lyrics( string ):
         else:
             pass
     print "################"
-
 generate_lyrics("Artist was an ambitious person. Artist wanted power and money in an easy way.")
 
 
