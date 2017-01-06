@@ -227,8 +227,56 @@ def word_rhyme_candidates(word):
         # print new_candidates
         return new_candidates
 
+def get_story_score(sentiment_dictionary):
+    if not sentiment_dictionary.get('POS'):
+        if not sentiment_dictionary.get('PRE'):
+            story_score = 0
+        else:
+            PRE_list = sentiment_dictionary.get('PRE')
+            # get sentiment_score
+            for symbol in PRE_list:
+                if symbol == "-" or symbol == "+":
+                    pre_pos_neg = symbol
+                    i = PRE_list.index(pre_pos_neg)
+                    break
+            pre_number = PRE_list[i+1]
+            # print "PRE intensity"
+            story_score = pre_pos_neg + pre_number
+            return story_score
+            # print PRE_list
+    else:
+        POS_list = sentiment_dictionary.get('POS')
+        # get sentiment_score
+        for symbol in POS_list:
+            if symbol == "-" or symbol == "+":
+                pos_pos_neg = symbol
+                i = POS_list.index(pos_pos_neg) 
+                break
+        pos_number = POS_list[i+1]
+        # print "POS intensity"
+        story_score = pos_pos_neg + pos_number
+        return story_score
+        # print POS_list
+
+def get_sentiment_dictionary(pattern, actions_list):
+    max_similarity_score = 0
+    sentiment_dictionary = []
+    for dictionary in actions_list:
+        for string in dictionary["TEXT"]:
+            # print pattern
+            # print string
+            # m = SequenceMatcher(None, pattern, string)
+            similarity_score = fuzz.partial_ratio(pattern, string)
+            # print similarity_score
+            # print "###########"
+            if similarity_score > max_similarity_score:
+                max_similarity_score = similarity_score
+                sentiment_dictionary = dictionary
+    return sentiment_dictionary
+
 def get_rhyme(sentence):
     pattern = sentence
+    closest_sentences = []
     # post_tag_list = nltk.pos_tag(sentence.split())
     target_syllables = syllables.sentence_syllables(sentence)
     tokens = nltk.word_tokenize(sentence) 
@@ -242,6 +290,7 @@ def get_rhyme(sentence):
     for sentence in candidate_sentence:
         sumOfSyllables = sum( [ syllables.syllables(word) for word in sentence ] )
         syllable_sentences.append( (sumOfSyllables, " ".join(sentence)) )
+    # print syllable_sentences
     syllable_sentences.sort()
     syllable_sentences.reverse()
     if len( syllable_sentences ) == 0:
@@ -253,7 +302,7 @@ def get_rhyme(sentence):
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
     close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n ] 
-    closest_sentences = []
+    # print close_sentences
     for line in close_sentences:
         # print line
         response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=" + line,
@@ -268,11 +317,11 @@ def get_rhyme(sentence):
         for keyword in keywords:
             score = score + keyword['score']
         if 0.05 < score < 0.5:
-            score = +1
+            score = 1
         elif 0.5 < score < 2.0:
-            score = +2
+            score = 2
         elif score > 2.0:
-            score = +3
+            score = 3
         elif -0.05 < score < 0.5:
             score = 0
         elif -0.5 < score < -0.05:
@@ -282,56 +331,26 @@ def get_rhyme(sentence):
         else:
             score = -3
         closest_sentences.append((score, line))
+        # closest_sentences.sort()
+        # closest_sentences.reverse()
     # print closest_sentences 
 
-    max_similarity_score = 0
-    sentiment_dictionary = []
-    for dictionary in actions_list:
-        for string in dictionary["TEXT"]:
-            # print pattern
-            # print string
-            # m = SequenceMatcher(None, pattern, string)
-            similarity_score = fuzz.partial_ratio(pattern, string)
-            # print score
-            # print "###########"
-            if similarity_score > max_similarity_score:
-                max_similarity_score = similarity_score
-                sentiment_dictionary = dictionary
-    # print sentiment_dictionary
-    if not sentiment_dictionary.get('POS'):
-        if not sentiment_dictionary.get('PRE'):
-            sentiment_score = 0
-        else:
-            PRE_list = sentiment_dictionary.get('PRE')
-            # get sentiment_score
-            for symbol in PRE_list:
-                if symbol == "-" or symbol == "+":
-                    pre_pos_neg = symbol
-                    i = PRE_list.index(pre_pos_neg)
-                    break
-            pre_number = PRE_list[i+1]
-            # print "PRE intensity"
-            story_score = pre_pos_neg + pre_number
-            # print PRE_list
-    else:
-        POS_list = sentiment_dictionary.get('POS')
-        # get sentiment_score
-        for symbol in POS_list:
-            if symbol == "-" or symbol == "+":
-                pos_pos_neg = symbol
-                i = POS_list.index(pos_pos_neg) 
-                break
-        pos_number = POS_list[i+1]
-        # print "POS intensity"
-        story_score = pos_pos_neg + pos_number
-        # print POS_list
+    sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
+    story_score = get_story_score(sentiment_dictionary)
+
+    print story_score
+
     # mapping of sentiments 
     if story_score > 0:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
+        print rhyme_sentences
     elif story_score < 0:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
+        print rhyme_sentences
     else:
-        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0]       
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
+        print rhyme_sentences      
+
     return random.choice(rhyme_sentences) # need to fix this
 
 def generate_lyrics( string ):
@@ -345,9 +364,11 @@ def generate_lyrics( string ):
     print ""
     print "#################"
     print 
+
     text_file = open('story.txt', 'w')  
     text_file.write(text)
     text_file.close()
+
     with open ("story.txt") as f:
         lines = f.readlines()
         line_no = 0
@@ -359,6 +380,7 @@ def generate_lyrics( string ):
 
     print "#### LYRICS ####"
     print ""
+
     for i, v in enumerate(rhyme_lines):
         lines.insert(2*i+1, v)
     for i,j in enumerate(lines):
@@ -368,4 +390,5 @@ def generate_lyrics( string ):
         else:
             pass
     print "################"
+
 generate_lyrics("Artist was an ambitious person. Artist wanted power and money in an easy way.")
