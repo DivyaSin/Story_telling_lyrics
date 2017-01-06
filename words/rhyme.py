@@ -11,15 +11,16 @@ from nltk.corpus import PlaintextCorpusReader, wordnet
 import syllables
 import pronouncing
 import pprint
-from nltk.tag import pos_tag
-from fnmatch import fnmatch
 from nltk.tokenize import word_tokenize
-from difflib import SequenceMatcher
+# from nltk.tag import pos_tag
+# from fnmatch import fnmatch
+# from difflib import SequenceMatcher
 from fuzzywuzzy import fuzz
 
 rhyme_entries = nltk.corpus.cmudict.entries()
 pronunciationDictionary = nltk.corpus.cmudict.dict() 
 
+# dictionary of actions
 action_keys = ['ACT', 'PRE', 'POS', 'TEN', 'TEXT']
 action_dictionary = {}
 actions_list = []
@@ -89,7 +90,7 @@ wordlists = PlaintextCorpusReader(corpus_root, '.*')
 # li = [i.strip().split() for i in open("lyrics1.txt").readlines()]
 
 # mega_sentences = ( wordlists.sents('taylor_lyrics.txt') ) 
-mega_sentences = ( wordlists.sents('new_lyrics_reversed.txt') ) 
+mega_sentences = (wordlists.sents('new_lyrics_reversed.txt')) 
 
 # mega_sentences = ( nltk.corpus.brown.sents() + 
 #                 nltk.corpus.inaugural.sents() + 
@@ -111,27 +112,27 @@ mega_sentences = ( wordlists.sents('new_lyrics_reversed.txt') )
 
 last_word_sentences = defaultdict(list)
 
-def last_word( sentence ):
+def last_word(sentence):
     ss = [ word for word in sentence if len(word) > 1 ]
     if len(ss) > 0:
         return ss[-1]
     else:
         return "" 
 
-if os.path.exists( "sentences.gz" ):
-    with gzip.open( "sentences.gz", "r" ) as cache_file:
+if os.path.exists("sentences.gz"):
+    with gzip.open("sentences.gz", "r") as cache_file:
         last_word_sentences = cPickle.load( cache_file )
 else:
     for sentence in mega_sentences:
         lw = last_word(sentence)
         last_word_sentences[ lw ].append(sentence)
-    with gzip.open( "sentences.gz", "w") as cache_file:
+    with gzip.open("sentences.gz", "w") as cache_file:
         cPickle.dump(last_word_sentences, cache_file)
 
-def candidate_sentences( word ):
+def candidate_sentences(word):
     return last_word_sentences[ word.lower() ]
 
-def qualityOfRhyme( p1, p2 ):
+def quality_of_rhyme(p1, p2):
     p1 = copy.deepcopy(p1)
     # print p1
     p2 = copy.deepcopy(p2)
@@ -155,7 +156,7 @@ def qualityOfRhyme( p1, p2 ):
             break
     return quality
     
-def findHighPriority(candidates, word):
+def find_high_priority(candidates, word):
     p2 = list(copy.deepcopy(word))
     p2.reverse()
     new_candidates = []
@@ -193,7 +194,7 @@ def findHighPriority(candidates, word):
     # print candidates
     return new_candidates
 
-def word_rhyme_candidates( word ):
+def word_rhyme_candidates(word):
     word = word.lower()
     candidates = []
     try:
@@ -205,7 +206,7 @@ def word_rhyme_candidates( word ):
         return []
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
-            quality = qualityOfRhyme(pronunciation, rhyme_pronunciation)
+            quality = quality_of_rhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
     candidates.sort()
@@ -216,7 +217,7 @@ def word_rhyme_candidates( word ):
     candidates = [ candidate for q, candidate in candidates ]
     # print candidates
     # print candidates
-    new_candidates = findHighPriority(candidates, word)
+    new_candidates = find_high_priority(candidates, word)
     if not new_candidates:
         # print "Candidates taken"
         # print candidates
@@ -281,7 +282,7 @@ def get_rhyme(sentence):
         else:
             score = -3
         closest_sentences.append((score, line))
-    print closest_sentences 
+    # print closest_sentences 
 
     max_similarity_score = 0
     sentiment_dictionary = []
@@ -296,7 +297,7 @@ def get_rhyme(sentence):
             if similarity_score > max_similarity_score:
                 max_similarity_score = similarity_score
                 sentiment_dictionary = dictionary
-    print sentiment_dictionary
+    # print sentiment_dictionary
     if not sentiment_dictionary.get('POS'):
         if not sentiment_dictionary.get('PRE'):
             sentiment_score = 0
@@ -309,9 +310,9 @@ def get_rhyme(sentence):
                     i = PRE_list.index(pre_pos_neg)
                     break
             pre_number = PRE_list[i+1]
-            print "PRE intensity"
+            # print "PRE intensity"
             story_score = pre_pos_neg + pre_number
-            print PRE_list
+            # print PRE_list
     else:
         POS_list = sentiment_dictionary.get('POS')
         # get sentiment_score
@@ -321,10 +322,10 @@ def get_rhyme(sentence):
                 i = POS_list.index(pos_pos_neg) 
                 break
         pos_number = POS_list[i+1]
-        print "POS intensity"
+        # print "POS intensity"
         story_score = pos_pos_neg + pos_number
-        print POS_list
-    # mapping of sentiments to be done
+        # print POS_list
+    # mapping of sentiments 
     if story_score > 0:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
     elif story_score < 0:
@@ -352,7 +353,6 @@ def generate_lyrics( string ):
         line_no = 0
         rhyme_lines = []
         for line in lines:
-            # assign intensity to lines
             rhyme_line = get_rhyme(line)
             rhyme_lines.insert(line_no, rhyme_line)
             line_no += 1
@@ -369,14 +369,3 @@ def generate_lyrics( string ):
             pass
     print "################"
 generate_lyrics("Artist was an ambitious person. Artist wanted power and money in an easy way.")
-
-
-
-
-      
-        
-
-
-
-
-
