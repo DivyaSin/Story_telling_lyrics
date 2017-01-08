@@ -61,7 +61,7 @@ with open("actions.txt") as actions_file:
             for array in action_dictionary[new_key]:
               val_array.append(array)
           val_array.reverse()
-          val_array = [val for sublist in val_array for val in sublist]
+          # val_array = [val for sublist in val_array for val in sublist]
           action_dictionary[new_key] = val_array
           action_dictionary.update(action_dictionary)
     if line == "END":
@@ -227,40 +227,43 @@ def word_rhyme_candidates(word):
         # print new_candidates
         return new_candidates
 
+def get_pre_score(sentiment_dictionary):
+    PRE_list = sentiment_dictionary.get('PRE')
+    # get sentiment_score
+    for list in PRE_list:
+        for symbol in list:
+            if symbol[0] == '-':
+                return -1 * int(symbol[1])
+            elif symbol[0] == '+':
+                return int(symbol[1])
+    return 0
+
+def get_pos_score(sentiment_dictionary):
+    POS_list = sentiment_dictionary.get('POS')
+    # get sentiment_score
+    for list in POS_list:
+        for symbol in list:
+            if symbol[0] == '-':
+                return -1 * int(symbol[1])
+            elif symbol[0] == '+':
+                return int(symbol[1])
+    return 0
+
 def get_story_score(sentiment_dictionary):
     if not sentiment_dictionary.get('POS'):
+        # print 'No pos'
         if not sentiment_dictionary.get('PRE'):
             story_score = 0
-        else:
-            PRE_list = sentiment_dictionary.get('PRE')
-            # get sentiment_score
-            for symbol in PRE_list:
-                if symbol == "-" or symbol == "+":
-                    pre_pos_neg = symbol
-                    i = PRE_list.index(pre_pos_neg)
-                    break
-            pre_number = PRE_list[i+1]
-            # print "PRE intensity"
-            if pre_pos_neg == '-':
-                pre_number = -1 * int(pre_number)
-            story_score = pre_number
             return story_score
-            # print PRE_list
+        else:
+            story_score = get_pre_score(sentiment_dictionary)
+            return story_score
     else:
-        POS_list = sentiment_dictionary.get('POS')
-        # get sentiment_score
-        for symbol in POS_list:
-            if symbol == "-" or symbol == "+":
-                pos_pos_neg = symbol
-                i = POS_list.index(pos_pos_neg) 
-                break
-        pos_number = POS_list[i+1]
-        # print "POS intensity"
-        if pos_pos_neg == '-':
-            pos_number = -1 * int(pos_number)
-        story_score = pos_number
+        # print "pos"
+        story_score = get_pos_score(sentiment_dictionary)
+        if story_score == 0:
+            story_score = get_pre_score(sentiment_dictionary)
         return story_score
-        # print POS_list
 
 def get_sentiment_dictionary(pattern, actions_list):
     max_similarity_score = 0
@@ -282,19 +285,23 @@ def get_corpus_score(close_sentences):
     closest_sentences = []
     for line in close_sentences:
         # print line
-        response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=" + line,
+        response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=%s" % line,
         headers={
         "X-Mashape-Key": "ur8eDH4fVCmshtOozaz1zoWSjS79p1U8IGljsnA2aJAoTuh4Fc",
         "Accept": "application/json"
             }
             )
         t = response.body
+        print line
+        print t
         keywords = t['keywords']
         score = 0
         for keyword in keywords:
             score = score + keyword['score']
         if len(keywords) != 0:
             score = score / len(keywords)
+        else:
+            score = 0
         if 0.05 < score < 0.5:
             score = 1
         elif 0.5 < score < 2.0:
@@ -347,21 +354,21 @@ def get_rhyme(sentence):
     #     print score, sentence, story_score
     #     if score == story_score:
     #         print sentence
-    # print story_score
     rhyme_sentences = []
     # mapping of sentiments 
     if story_score > 0:
-        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score > 0] 
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
         rhyme_sentences.sort()
-        pprint.pprint(rhyme_sentences)
+        # pprint.pprint(rhyme_sentences)
     elif story_score < 0:
-        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score < 0] 
+        rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
         rhyme_sentences.sort()
-        pprint.pprint(rhyme_sentences)
+        # pprint.pprint(rhyme_sentences)
     else:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
-        print rhyme_sentences      
-
+        # print rhyme_sentences 
+    if not rhyme_sentences:
+        rhyme_sentences = close_sentences
     return random.choice(rhyme_sentences) # need to fix this
 
 def generate_lyrics(string):
@@ -402,4 +409,4 @@ def generate_lyrics(string):
             pass
     print "################"
 
-generate_lyrics("Artist was an ambitious person. Artist wanted power and money in an easy way.")
+generate_lyrics("The rumor had spread fast. Enemy had fallen into the river. Prince saved Enemy's life. Prince was being kissed. Suddenly Enemy recognized Prince's tattoo. It was the same as the one used by the fraternity. The fraternity had murdered Enemy's father some months ago. At once all those terrible memories were present again.")
