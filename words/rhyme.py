@@ -285,23 +285,31 @@ def get_corpus_score(close_sentences):
     closest_sentences = []
     for line in close_sentences:
         # print line
-        response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=%s" % line,
-        headers={
-        "X-Mashape-Key": "ur8eDH4fVCmshtOozaz1zoWSjS79p1U8IGljsnA2aJAoTuh4Fc",
-        "Accept": "application/json"
+        unirest.timeout(10)
+        try:
+            response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=%s" % line,
+            headers={
+            "X-Mashape-Key": "ur8eDH4fVCmshtOozaz1zoWSjS79p1U8IGljsnA2aJAoTuh4Fc",
+            "Accept": "application/json"
             }
             )
+        except Exception, e:
+            print "exception thrown"
+            print e
+
+        if response.code != 200:
+            continue
         t = response.body
-        print line
-        print t
-        keywords = t['keywords']
-        score = 0
-        for keyword in keywords:
-            score = score + keyword['score']
-        if len(keywords) != 0:
-            score = score / len(keywords)
-        else:
-            score = 0
+        # print line
+        # print t
+        # keywords = t['keywords']
+        score = t['score']
+        # for keyword in keywords:
+        #     score = score + keyword['score']
+        # if len(keywords) != 0:
+        #     score = score / len(keywords)
+        # else:
+        #     score = 0
         if 0.05 < score < 0.5:
             score = 1
         elif 0.5 < score < 2.0:
@@ -341,6 +349,7 @@ def get_rhyme(sentence):
     if len( syllable_sentences ) == 0:
         if len( rhymes ) > 0: 
             # get synonyms of rhyme
+            return " "
             return ", ".join(rhymes[:12])
         else:
             return "Oho ho ho ho ho"
@@ -409,4 +418,4 @@ def generate_lyrics(string):
             pass
     print "################"
 
-generate_lyrics("The rumor had spread fast. Enemy had fallen into the river. Prince saved Enemy's life. Prince was being kissed. Suddenly Enemy recognized Prince's tattoo. It was the same as the one used by the fraternity. The fraternity had murdered Enemy's father some months ago. At once all those terrible memories were present again.")
+generate_lyrics("Tlaloc -the God of the rain- was angry. He sent a storm. The heavy rain damaged the old wooden bridge. Princess tried to cross the river. The bridge collapsed injuring badly Princess's head. Princess's life was at risk. Princess was not cured. In this way, Trader expected Princess's dead. Trader thoroughly observed Princess. Then, Trader took a dagger. Jumped towards Princess. Princess was attacked.")
