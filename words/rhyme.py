@@ -12,10 +12,12 @@ import syllables
 import pronouncing
 import pprint
 from nltk.tokenize import word_tokenize
+from fuzzywuzzy import fuzz
+import markov_lyrics
 # from nltk.tag import pos_tag
 # from fnmatch import fnmatch
 # from difflib import SequenceMatcher
-from fuzzywuzzy import fuzz
+
 
 rhyme_entries = nltk.corpus.cmudict.entries()
 pronunciationDictionary = nltk.corpus.cmudict.dict() 
@@ -67,19 +69,31 @@ with open("actions.txt") as actions_file:
     if line == "END":
       break
 # pprint.pprint(actions_list)
-
+# flag = "False"
 # output = ""
-# file_name = "corpus/new_lyrics_reversed.txt"
-# string_to_add = "."
+# if flag != "True":
+#     file_name = "corpus/lyrics_batch.txt"
+# # string_to_add = "."
+#     with open(file_name, 'r') as f:
+#         file_lines = [''.join([x.strip(), string_to_add, '\n']) for x in f.readlines() ]
 
-# with open(file_name, 'r') as f:
-#     file_lines = [''.join([x.strip(), string_to_add, '\n']) for x in f.readlines() ]
+#     with open(file_name, 'w') as f:
+#         f.writelines(file_lines) 
+#     false = "True"
 
-# with open(file_name, 'w') as f:
-#     f.writelines(file_lines) 
+def last_word(sentence):
+    ss = [ word for word in sentence if len(word) > 1 ]
+    if len(ss) > 0:
+        return ss[-1]
+    else:
+        return "" 
 
-corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
-wordlists = PlaintextCorpusReader(corpus_root, '.*')
+last_word_sentences = defaultdict(list)
+
+def getMarkovBatch():
+    markov_lyrics.markov()
+    corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
+    wordlists = PlaintextCorpusReader(corpus_root, '.*')
 
 # print wordlists.fileids()
 
@@ -90,7 +104,8 @@ wordlists = PlaintextCorpusReader(corpus_root, '.*')
 # li = [i.strip().split() for i in open("lyrics1.txt").readlines()]
 
 # mega_sentences = ( wordlists.sents('taylor_lyrics.txt') ) 
-mega_sentences = (wordlists.sents('new_lyrics_reversed.txt')) 
+
+    mega_sentences = (wordlists.sents('lyrics_batch.txt'))
 
 # mega_sentences = ( nltk.corpus.brown.sents() + 
 #                 nltk.corpus.inaugural.sents() + 
@@ -110,27 +125,51 @@ mega_sentences = (wordlists.sents('new_lyrics_reversed.txt'))
 #                 nltk.corpus.gutenberg.sents("shakespeare-hamlet.txt") + 
 #                 nltk.corpus.gutenberg.sents("shakespeare-macbeth.txt") ) 
 
-last_word_sentences = defaultdict(list)
-
-def last_word(sentence):
-    ss = [ word for word in sentence if len(word) > 1 ]
-    if len(ss) > 0:
-        return ss[-1]
-    else:
-        return "" 
-
-if os.path.exists("sentences.gz"):
-    with gzip.open("sentences.gz", "r") as cache_file:
-        last_word_sentences = cPickle.load( cache_file )
-else:
+    
+    # if os.path.exists("sentences.gz"):
+    #     with gzip.open("sentences.gz", "r") as cache_file:
+    #         last_word_sentences = cPickle.load( cache_file )
+    # else:
     for sentence in mega_sentences:
         lw = last_word(sentence)
         last_word_sentences[ lw ].append(sentence)
+    # pprint.pprint(last_word_sentences)
+    keys = last_word_sentences.keys()
+    # print "\n"
+    # print keys
     with gzip.open("sentences.gz", "w") as cache_file:
         cPickle.dump(last_word_sentences, cache_file)
+    return keys
 
 def candidate_sentences(word):
-    return last_word_sentences[ word.lower() ]
+    # print "candidate_sentences"
+    candidates = []
+    word_pronunciation = pronunciationDictionary[word]
+    word_pro = word_pronunciation[0]
+    keys = getMarkovBatch()
+    for key in keys:
+        try:
+            key_pronunciation = pronunciationDictionary[key]
+            key_pro = key_pronunciation[0]
+            # print key_pronunciation
+        except KeyError:
+            # print "KeyError"
+            if key[-1].isdigit():
+                continue
+            key_pro = pronunciationDictionary[key[-1].lower()]
+        rhyme_quality = quality_of_rhyme(word_pro, key_pro)
+        # print word_pronunciation, key_pronunciation
+        # print rhyme_quality
+        candidates.append( (rhyme_quality, key) )
+    # print candidates
+    # print candidates.sort()
+    # print candidates.reverse()
+    words = [ key for rhyme_quality, key in candidates if rhyme_quality >= 1]
+    # print words
+    if words:
+        return last_word_sentences[ words[0].lower() ]
+    else:
+        candidate_sentences(word)
 
 def quality_of_rhyme(p1, p2):
     p1 = copy.deepcopy(p1)
@@ -138,22 +177,25 @@ def quality_of_rhyme(p1, p2):
     p2 = copy.deepcopy(p2)
     # print p2
     p1.reverse()
+    # print "p1 reverse"
     # print p1
     p2.reverse()
+    # print "p2 reverse"
     # print p2
     if p1 == p2:
         return 0
     quality = 0
-    for i, p in enumerate(p1):
+    if p1[0]==p2[0]:
+        quality += 1
+        if p1[1]==p2[1] and p1[1] in ['a','e','i','o','u']:
+            quality += 2
+    for i, p in enumerate(p1):    
         try:
-            if p == p2[i] and p in ('a', 'e', 'i', 'o', 'u'):
-                quality += 3
-            else:
+            if p == p2[i+1]:
                 quality += 1
-            if p != p2[i]:
-                break
         except IndexError:
             break
+    # print quality
     return quality
     
 def find_high_priority(candidates, word):
@@ -206,16 +248,19 @@ def word_rhyme_candidates(word):
         return []
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
+            # print pronunciation, rhyme_pronunciation
+            if rhyme_word[-1].isdigit():
+                continue
             quality = quality_of_rhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
     candidates.sort()
     candidates.reverse()
     # best_quality = candidates[0][0]
-    # worst_quality = best_quality - 5
-    # candidates = [ candidate for q, candidate in candidates if q >= worst_quality ]
-    candidates = [ candidate for q, candidate in candidates ]
-    # print candidates
+    # worst_quality = best_quality -1
+    candidates = [ candidate for q, candidate in candidates]
+    # candidates = [ candidate for q, candidate in candidates ]
+
     # print candidates
     new_candidates = find_high_priority(candidates, word)
     if not new_candidates:
@@ -334,11 +379,23 @@ def get_rhyme(sentence):
     target_syllables = syllables.sentence_syllables(sentence)
     tokens = nltk.word_tokenize(sentence) 
     rhymes = word_rhyme_candidates(last_word(tokens))
+    # for syn in wordnet.sysnsets(last_word(tokens)):
+    #     for l in syn.lemmas():
+    #         synonyms.append(l.name())
+    # print(set(synonyms))
     candidate_sentence = []
     # if len(tokens) == 1:
     #     return ", ".join(rhymes[:12])
+
+    print rhymes
     for rhyme in rhymes:
         candidate_sentence += candidate_sentences( rhyme )
+    # print sentence
+    print candidate_sentence
+
+    # if candidate_sentence == []:
+    #     generate_lyrics(sentence)
+
     syllable_sentences = []
     for sentence in candidate_sentence:
         sumOfSyllables = sum( [ syllables.syllables(word) for word in sentence ] )
@@ -375,7 +432,7 @@ def get_rhyme(sentence):
         # pprint.pprint(rhyme_sentences)
     else:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
-        # print rhyme_sentences 
+    print rhyme_sentences 
     if not rhyme_sentences:
         rhyme_sentences = close_sentences
     return random.choice(rhyme_sentences) # need to fix this
@@ -418,4 +475,4 @@ def generate_lyrics(string):
             pass
     print "################"
 
-generate_lyrics("Tlaloc -the God of the rain- was angry. He sent a storm. The heavy rain damaged the old wooden bridge. Princess tried to cross the river. The bridge collapsed injuring badly Princess's head. Princess's life was at risk. Princess was not cured. In this way, Trader expected Princess's dead. Trader thoroughly observed Princess. Then, Trader took a dagger. Jumped towards Princess. Princess was attacked.")
+generate_lyrics("He sent a storm.")
