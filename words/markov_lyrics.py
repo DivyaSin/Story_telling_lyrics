@@ -1,14 +1,24 @@
 import random
 import markovify
+import string
 from sylco import sylco
 
-with open('/Users/divyasingh/Desktop/pywords-master/words/reversed_lyrics.txt') as f:
-    text = f.read()
+def markov():
 
-reversed_lyrics = markovify.NewlineText(text)
+	with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/love_lyrics.txt') as f:
+		text = f.read()
 
-for i in range(10976):
-    print(reversed_lyrics.make_short_sentence(70))
+
+# with open('/Users/divyasingh/Desktop/pywords-master/words/reversed_lyrics.txt') as f:
+#     text = f.read()
+
+	reversed_lyrics = markovify.NewlineText(text)
+	text_file = open('corpus/lyrics_batch.txt', 'w')  
+	for i in range(10):
+    		text_file.write((reversed_lyrics.make_short_sentence(70)).translate(None, string.punctuation)+'.')
+    		text_file.write("\n")
+	text_file.close()
+
 # Specify then remove punctuation
 # punctuations = set([',','.','"','?','!'])
 

@@ -185,10 +185,13 @@ def quality_of_rhyme(p1, p2):
     if p1 == p2:
         return 0
     quality = 0
-    if p1[0]==p2[0]:
-        quality += 1
-        if p1[1]==p2[1] and p1[1] in ['a','e','i','o','u']:
-            quality += 2
+    try:
+        if p1[0]==p2[0]:
+            quality += 1
+            if p1[1]==p2[1] and p1[1] in ['a','e','i','o','u']:
+                quality += 2
+    except IndexError:
+        pass
     for i, p in enumerate(p1):    
         try:
             if p == p2[i+1]:
@@ -258,7 +261,7 @@ def word_rhyme_candidates(word):
     candidates.reverse()
     # best_quality = candidates[0][0]
     # worst_quality = best_quality -1
-    candidates = [ candidate for q, candidate in candidates]
+    candidates = [ candidate for q, candidate in candidates if q >= 3]
     # candidates = [ candidate for q, candidate in candidates ]
 
     # print candidates
@@ -391,7 +394,7 @@ def get_rhyme(sentence):
     for rhyme in rhymes:
         candidate_sentence += candidate_sentences( rhyme )
     # print sentence
-    print candidate_sentence
+    # print candidate_sentence
 
     # if candidate_sentence == []:
     #     generate_lyrics(sentence)
@@ -412,7 +415,7 @@ def get_rhyme(sentence):
             return "Oho ho ho ho ho"
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
-    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n ] 
+    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n <= close_number + 1 ] 
     closest_sentences = get_corpus_score(close_sentences)
     sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
     story_score = get_story_score(sentiment_dictionary)
@@ -475,4 +478,4 @@ def generate_lyrics(string):
             pass
     print "################"
 
-generate_lyrics("He sent a storm.")
+generate_lyrics("Trader thoroughly observed Warrior. Then, Trader took a dagger. Jumped towards Warrior. Warrior was attacked. Trader's frame of mind was very volatile. Without thinking, Warrior was charged against. Warrior felt panic.")
