@@ -1,0 +1,43 @@
+Eagle_Knight actor
+
+Princess actor
+
+Princess was_fond_of Eagle_Knight
+     Princess(+1,1):Eagle_Knight
+
+Princess fell_in_love Eagle_Knight
+     Princess(+3,2):Eagle_Knight
+
+Eagle_Knight was_attracted_to Lady
+     Eagle_Knight(+2,2):Lady
+
+Lady was_in_love_with Eagle_Knight
+     Lady(+3,2):Eagle_Knight
+     lc(princess):Lady
+
+Princess got_jealous_of_b_because_c_attention Lady Eagle_Knight
+     Princess(-2,2):Lady
+
+Princess attacked Lady
+     Lady(-3,4):Princess
+     Eagle_Knight(-2,4):Princess
+     lr(Lady):Princess+
+     pd(Princess):Lady+
+
+Princess wounded Lady
+     Eagle_Knight(-3,1):Princess
+     hr(Lady):Princess
+     pd(Princess):Eagle_Knight+
+
+Eagle_Knight health_risk_1 Lady
+
+Eagle_Knight cured Lady
+     Lady(+3,5):Eagle_Knight
+     Eagle_Knight(+2,1):Eagle_Knight
+
+Lady attacked Princess
+     Princess(-3,4):Lady
+     lr(Princess):Lady+
+     pd(Lady):Princess+
+
+Princess ran_away

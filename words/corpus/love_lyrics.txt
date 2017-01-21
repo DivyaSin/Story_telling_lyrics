@@ -40,7 +40,7 @@ Be cruel to me 'cause I'm a fool for
 Blue moon girls from once upon a Shangri-La
 How I often wonder where you are
 You have got that face that just says
-"Baby, I was made to break your heart"
+Baby, I was made to break your heart
 Suck it and see, you never know
 Sit next to me before I go
 Go, go, go
@@ -53,7 +53,6 @@ And I'd never dreamed that I'd lose somebody like you
 No I don't want to fall in love 
 this girl is only gonna break your heart
 No I don't want to fall in love this girl is only gonna break your heart
-
 With you
 With you this girl is only gonna break your heart
 What a wicked game you played to make me feel this way
@@ -71,7 +70,8 @@ I'd never dreamed that I'd love somebody like you
 And I'd never dreamed that I'd lose somebody like you
 No I don't want to fall in love
 this girl is only gonna break your heart
-No I don't want to fall in love this girl is only gonna break your heart
+No I don't want to fall in love 
+this girl is only gonna break your heart
 With you 
 this girl is only gonna break your heart
 With you this girl is only gonna break your heart
@@ -81,7 +81,7 @@ This girl is only gonna break your heart
 Nobody loves no one
 I plant the kind of kiss
 That wouldn't wake a baby
-On the self-same face
+On the self same face
 The wouldn't let me sleep
 And the street is singing with my feet
 And dawn gives me a shadow I know to be taller
@@ -337,8 +337,8 @@ and I will love you
 till the noise has long since passed 
 And I did not mean to shout, Just drive
 Just get us out, dead or alive 
-The road's too long to mention —
-Lord, it's something to see! —
+The road's too long to mention 
+Lord, it's something to see! 
 laid down by the
 Good Intentions Paving Company,
 all the way to the thing
@@ -368,8 +368,8 @@ syne, sealed, delivered,
 I sang.
 And there is hesitation,
 and it always remains
-(concerning you, me,
-and the rest of the gang),
+concerning you, me,
+and the rest of the gang,
 but, in our quiet hour,
 I feel I see everything,
 and am in love
@@ -377,7 +377,7 @@ with the hook
 upon which everyone hangs.
 And I know you meant
 to show the extent
-to which you gave a goddang —
+to which you gave a goddang
 you ranged real hot and real cold,
 but I'm sold,
 I am at home on that range.
@@ -387,7 +387,7 @@ when I've been trying
 with my whole heart and soul
 to stay right here, in the right lane.
 But it can make you feel over, and old
-(Lord, you know it's a shame),
+Lord, you know it's a shame,
 when I only want for you to pull over,
 and hold me,
 till I can't remember my own name.
@@ -492,7 +492,7 @@ To be born again
 From the far side of the ocean
 If I put the wheels in motion
 And I stand with my arms behind me
-And I'm pushin' on the door
+And I'm pushing on the door
 Could you find me?
 Would you kiss-a my eyes?
 To lay me down
@@ -500,27 +500,27 @@ In silence easy
 To be born again
 To be born again
 There you go
-Standin' with the look of avarice
-Talkin' to Huddie Ledbetter
-Showin' pictures on the wall
-Whisperin' in the hall
-And pointin' a finger at me
+Standing with the look of avarice
+Talking to Huddie Ledbetter
+Showing pictures on the wall
+Whispering in the hall
+And pointing a finger at me
 There you go, there you go
-Standin' in the sun darlin'
+Standing in the sun darling
 With your arms behind you
 And your eyes before
 There you go
-Takin' good care of your boy
-Seein' that he's got clean clothes
-Puttin' on his little red shoes
+Taking good care of your boy
+Seeing that he's got clean clothes
+Putting on his little red shoes
 I see you know he's got clean clothes
-A-puttin' on his little red shoes
-A-pointin' a finger at me
+A-putting on his little red shoes
+A-pointing a finger at me
 And here I am
 Standing in your sad arrest
 Trying to do my very best
-Lookin' straight at you
-Comin' through, darlin'
+Looking straight at you
+Coming through, darling
 Yeah, yeah, yeah
 If I ventured in the slipstream
 Between the viaducts of your dreams
@@ -553,8 +553,8 @@ In another time
 In another place
 Way up in the heaven
 Way up in the heaven
-We are goin' up to heaven
-We are goin' to heaven
+We are going up to heaven
+We are going to heaven
 In another time
 In another place
 In another time
@@ -564,7 +564,7 @@ Two atoms they collide in all their random ways
 The meeting of you and I not so random some might say
 She walks up close to me and she looks me in the eyes
 She said
-"Boy, what's it gonna be, now that it's just you and I?"
+Boy, what's it gonna be, now that it's just you and I?
 I'm a fool, I'm a fool for you
 I'm a fool, I'm a fool for you
 So I stepped up to the plate to a place I thought I'd never be
@@ -586,7 +586,7 @@ For that I say
 I will come and I will stand
 And I will live my life beside you
 I'm a proud, a proud man
-A proud man to be walkin right next to your shoes
+A proud man to be walking right next to your shoes
 You're the one, the only one, the only one that's just right just for me
 But all the same, you know I, you know I'm, I'm just a fool
 I'm a fool for you, I'm a fool, I'm a fool for you
@@ -623,7 +623,7 @@ I've a drowning grip on your adoring face
 I love you, my responsibility has found a place beside you
 And strong warnings in the guise of gentle words
 Come wave upon me from the family wider net absurd
-"You'll take care of her, I know it, you will do a better job"
+You'll take care of her, I know it, you will do a better job
 Maybe, but not what she deserves
 Elope with me Miss Private and we'll drink ourselves awake
 We'll taste the coffee houses and award certificates
@@ -671,7 +671,6 @@ He is the child of my first marriage
 But I've reason to believe
 We both will be received
 In Graceland
-
 She comes back to tell me she's gone
 As if I didn't know that
 As if I didn't know my own bed
@@ -987,8 +986,8 @@ For you to find you love me, and tell me so
 It's ok, don't need to say it
 I am a lineman for the county
 And I drive the main road
-Searchin' in the sun for another overload
-I hear you singin' in the wire,
+Searching in the sun for another overload
+I hear you singing in the wire,
 I can hear you through the whine
 And the Wichita lineman is still on the line
 I know I need a small vacation
@@ -1060,3 +1059,1930 @@ Let the poets struggle to describe your heart
 Your art of love and your love of art
 Well, if you ever loved me, tell me so
 As you turn to go
+
+If you're not the one then why does my soul feel glad today?
+If you're not the one then why does my hand fit yours this way?
+If you are not mine then why does your heart return my call?
+If you are not mine would I have the strength to stand at all?
+I never know what the future brings,
+But I know you are here with me now,
+We'll make it through,
+And I hope you are the one I share my life with
+I don't want to run away but I can't take it, I don't understand,
+If I'm not made for you then why does my heart tell me that I am?
+Is there any way that I can stay in your arms?
+If I don't need you then why am I crying on my bed?
+If I don't need you then why does your name resound in my head?
+If you're not for me then why does this distance maim my life?
+If you're not for me then why do I dream of you as my wife?
+I don't know why you're so far away,
+But I know that this much is true,
+We'll make it through,
+And I hope you are the one I share my life with,
+And I wish that you could be the one I die with,
+And I pray in you're the one I build my home with,
+I hope I love you all my life
+I don't want to run away but I can't take it , I don't understand,
+If I'm not made for you then why does my heart tell me that I am?
+Is there any way that I can stay in your arms?
+'Cause I miss you body and soul so strong that it takes my breath away,
+And I breathe you into my heart and pray for the strength to stand today,
+'Cause I love you, whether it's wrong or right,
+And though I can't be with you tonight,
+You know my heart is by your side
+I don't want to run away but I can't take it,
+I don't understand,
+If I'm not made for you then why does my heart tell me that I am?
+Is there any way I can stay in your arms?
+
+Eva, eva, eva (uh)
+Oh, eva, eva, eva (Fifth Harmony, baby)
+Oh, eva, eva, eva (let's go)
+Oh, everlasting love (another one)
+
+Always looking over my shoulder
+'Cause I don't ever wanna miss you
+I been thinking about you daily
+Can't wait to see your face
+And I don't even know you
+But I know that I can't wait to kiss you
+Somehow I know when we finally lock eyes
+That you'll feel the same way
+
+You're gonna be all I needed
+You make me feel like a dream
+Whoever you are
+Baby, you are
+The one I'm waiting for
+
+You're my ever- everlasting love
+My ever- everlasting love
+And I'm never ever giving up
+'Til you're laying next to me
+I'm lookin' for that ever- everlasting love
+Forever ever kind of touch
+And I'll never ever get enough
+Baby, we were meant to be
+
+Ain't no use in wasting my time
+On just anybody, baby
+I want exceptional, original
+Someone I can't deny
+I'm in love with you already
+I know it sounds crazy
+But I hope you save all you got for me
+'Cause, baby, you're all mine
+
+You're gonna be all I needed
+You make me feel like a dream
+Whoever you are
+Baby, you are
+The one I'm waiting for
+
+You're my ever- everlasting love
+My ever- everlasting love
+And I'm never ever giving up
+'Til you're laying next to me
+I'm lookin' for that ever- everlasting love
+Forever ever kind of touch
+And I'll never ever get enough
+Baby, we were meant to be
+
+Everlasting love
+Everlasting love
+Everlasting love
+My everlasting love
+
+I don't even know your name
+I can't get you off my brain
+Darling, I can hardly wait
+'Til I can get to know you
+You'll be beautifully insane
+Infinitely all for me
+Promise you'll be glad you came
+I can't wait to show you
+
+You're my ever- everlasting love
+My ever- everlasting love
+And I'm never ever giving up
+'Til you're laying next to me
+I'm lookin' for that ever- everlasting love
+Forever ever kind of touch
+And I'll never ever get enough
+Baby, we were meant to be
+
+Everlasting love
+Everlasting love
+Everlasting love
+My everlasting love
+
+Life is tough if you fall
+You've got it all and you're not satisfied
+People try to lead you astray
+But I ain't gonna fall for the games that they play
+I know of the dangers of fooling with strangers
+
+You, you are my one temptation
+You, you are the one I've no resistance to
+Yeah, honey, it's you
+You are my one temptation
+You give me the thrill that I'm addicted to
+Ah, you're my one temptation
+
+You can look, you can't touch
+Nothin' is free if you pay too much,
+When there's talk on the street and the pressure is hot
+You want more than you got
+Don't hear what they're sayin', day out and day in
+
+You, you are my one temptation
+Ooh, you are the one I've no resistance to
+Yeah, nobody knows you are my one temptation
+Ooh, give me the thrill that I'm addicted to
+You're my one temptation, oh
+
+Nothin' ever happens 'til you show your face around
+Can't let you see that you've turned my world around
+A love that's gone and yet too strong to say no
+The only one who could lead me on
+You're the one, you're the only one
+
+You, you are my one temptation, ooh
+You are the one I've no resistance to
+Yeah, honey, it's you
+You, you are my one temptation
+You give me the thrill, oh, baby
+
+You, you are my one temptation, ooh
+You are the one I've no resistance to
+Yeah, honey, it's you
+You, you are my one temptation
+You give me the thrill, oh, baby
+
+Don't know why 
+I'm survivin' every lonely day
+When there's got to be no chance for me
+My life would end
+And it doesn't matter how I cry
+My tears, so far, are a waste of time
+If I turn away
+Am I strong enough to see it through
+Go crazy is what I will do
+
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-huh, oh
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-hoh
+
+Oh da, da, da, da, da, da, da, da, da, da, da
+Oooh, oooh
+Aahhhh! Aahhhh!
+
+Can't let go and it doesn't matter how I try
+I gave it all so easily to you my love
+To dreams that never will come true
+Am I strong enough to see it through
+Go crazy is what I will do
+
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-huh, oh
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-hoh
+
+Oh!
+
+Aahhhh! Aahhhh!
+
+Oh!
+
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-huh, oh
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-hoh
+
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-huh, oh
+If I can't have you
+I don't want nobody, baby
+If I can't have you uh-hoh
+
+I don't care if Monday's blue
+Tuesday's gray and Wednesday too
+Thursday I don't care about you
+It's Friday I'm in love
+
+Monday you can fall apart
+Tuesday Wednesday break my heart
+Oh, Thursday doesn't even start
+It's Friday I'm in love
+
+Saturday wait
+And Sunday always comes too late
+But Friday never hesitate
+
+I don't care if Monday's black
+Tuesday, Wednesday heart attack
+Thursday never looking back
+It's Friday I'm in love
+
+Monday you can hold your head
+Tuesday, Wednesday stay in bed
+Or Thursday watch the walls instead
+It's Friday I'm in love
+
+Saturday wait
+And Sunday always comes too late
+But Friday never hesitate
+
+Dressed up to the eyes
+It's a wonderful surprise
+To see your shoes and your spirits rise
+Throwing out your frown
+And just smiling at the sound
+And as sleek as a shriek
+Spinning round and round
+Always take a big bite
+It's such a gorgeous sight
+To see you in the middle of the night
+You can never get enough
+Enough of this stuff
+It's Friday
+I'm in love
+
+I don't care if Monday's blue
+Tuesday's gray and Wednesday too
+Thursday I don't care about you
+It's Friday I'm in love
+
+Monday you can fall apart
+Tuesday, Wednesday break my heart
+Thursday doesn't even start
+It's Friday I'm in love
+
+People say I'm the life of the party
+Because I tell a joke or two
+Although I might be laughing loud and hearty
+Deep inside I'm blue
+So take a good look at my face
+You'll see my smile looks out of place
+If you look closer, it's easy to trace
+The tracks of my tears
+I need you, need you
+Since you left me if you see me with another girl
+Seeming like I'm having fun
+Although she may be cute
+She's just a substitute
+Because you're the permanent one
+So take a good look at my face
+You'll see my smile looks out of place
+If you look closer, it's easy to trace
+The tracks of my tears
+I need you, need you
+Outside I'm masquerading
+Inside my hope is fading
+Just a clown oh yeah
+Since you put me down
+My smile is my make up
+I wear since my break up with you
+So take a good look at my face
+You'll see my smile looks out of place
+If you look closer, it's easy to trace
+The tracks of my tears
+If you, if you could return
+Don't let it burn
+Don't let it fade
+I'm sure I'm not being rude
+But it's just your attitude
+It's tearing me apart
+It's ruining every day
+For me
+I swore I would be true
+And fellow, so did you
+So why were you holding her hand?
+Is that the way we stand?
+Were you lying all the time?
+Was it just a game to you?
+But I'm in so deep
+You know I'm such a fool for you
+You've got me wrapped around your finger
+Do you have to let it linger?
+Do you have to, do you have to, do have to let it linger?
+
+Oh, I thought the world of you
+I thought nothing could go wrong
+But I was wrong, I was wrong
+If you, if you could get by
+Trying not to lie
+Things wouldn't be so confused
+And I wouldn't feel so used
+But you always really knew
+I just want to be with you
+And I'm in so deep
+You know I'm such a fool for you
+You've got me wrapped around your finger
+Do have to let it linger?
+Do you have to, do you have to, do have to let it linger?
+
+And I'm in so deep
+You know I'm such a fool for you
+You've got me wrapped around your finger
+Do have to let it linger?
+Do you have to, do you have to, do have to let it linger?
+
+You know I'm such a fool for you
+You've got me wrapped around your finger
+Do have to let it linger?
+Do you have to, do you have to, do have to let it linger?
+
+I feel it in my fingers
+I feel it in my toes
+The love that's all around me
+And so the feeling grows
+It's written on the wind
+It's everywhere I go
+So if you really love me
+Come on and let it show
+You know I love you, I always will
+My mind's made up by the way that I feel
+There's no beginning, there'll be no end
+'Cause on my love you can depend
+I see your face before me
+As I lay on my bed
+I cannot get to thinking
+Of all the things you said
+You gave your promise to me and I gave mine to you
+I need someone beside me in everything I do
+You know I love you, I always will
+My mind's made up by the way that I feel
+There's no beginning, there'll be no end
+'Cause on my love you can depend
+I got to keep it moving
+It's written in the wind
+Oh everywhere I go
+So if you really love me, love me
+Come on and let it show
+Come on and let it show
+Come on and let it
+Come on and let it,
+Come on and let it show
+Come on and let it,
+Come on and let it,
+Come on and let it show,
+Come on and let it show,
+Come on and let it show
+
+Don't ask me
+What you know is true
+Don't have to tell you
+I love your precious heart
+
+I
+I was standing
+You were there
+Two worlds collided
+And they could never tear us apart
+
+We could live
+For a thousand years
+But if I hurt you
+I'd make wine from your tears
+
+I told you
+That we could fly
+'Cause we all have wings
+But some of us don't know why
+
+I was standing
+You were there
+Two worlds collided
+And they could never ever tear us apart
+
+I
+I was standing
+You were there
+Two worlds collided
+And they could never tear us apart
+
+You were standing
+I was there
+Two worlds collided
+And they could never tear us apart
+
+I
+I was standing
+You were there
+Two worlds collided
+
+You've gotta have heart
+All you really need is heart
+When the odds are sayin' you'll never win
+That's when the grin should start
+You've gotta have hope
+Mustn't sit around and mope
+Nothin's half as bad as it may appear
+Wait'll next year and hope
+When your luck is battin' zero
+Get your chin up off the floor
+Mister you can be a hero
+You can open any door, there's nothin' to it but to do it
+You've gotta have heart
+Miles 'n miles n' miles of heart
+Oh, it's fine to be a genius of course
+But keep that old horse
+Before the cart
+First you've gotta have heart
+[ROCKY]
+A great slugger we haven't got
+[SMOKEY]
+A great pitcher we haven't got
+[VERNON]
+A great ball club we haven't got
+[ROCKY, SMOKEY & VERNON]
+What've we got?
+[ALL]
+We've got heart
+All you really need is heart
+When the odds are sayin' you'll never win
+That's when the grin should start
+[ROCKY, SMOKEY, LINVILLE]
+We've got hope
+We don't sit around and mope
+Not a solitary sob do wwe heave
+Mister, 'cause we've got hope
+[ROCKY]
+We're so happy that we're hummin'
+[ALL]
+Hmm-hmm-hmm
+[VAN BUREN]
+That's the hearty thing to do
+[ALL]
+Hoo-hoo-hoo
+[SMOKEY]
+'Cause we know our ship will come in
+[ALL]
+Hmm-hmm-hmm
+[ROCKY]
+So it's ten years overdue
+[ALL]
+Hoo-hoo-hoo
+We've got heart
+Miles 'n miles 'n miles o' heart
+[VERNON]
+Oh, it's fine to be a genius of course
+[BOYS]
+Butt keep that old horse before the cart
+[VAN BUREN]
+So what the hecks the use of cryin'?
+[SMOKEY]
+Why should we curse?
+[ROCKY]
+We've gotta get better, 'cause we can't get worse!
+[ALL]
+And to add to it, we've got heart
+We've got heart
+We've got heart
+We've got heart
+All you really need is heart
+When the odds are sayin' you'll never win
+That's when the grin should start
+[SMOKEY]
+We're so happy that we're laughin'
+[ALL]
+Ha ha ha
+[VAN BUREN]
+That's the hearty thing to do
+[ALL]
+Hoo-hoo-hoo
+[VERNON]
+So we ain't been autographin'
+[ALL]
+Ha ha ha
+[ROCKY]
+'Cept to sign an I.O.U.
+[ALL]
+Hoo-hoo-hoo
+[ALL]
+We've got heart
+Miles 'n miles n' miles of heart
+Oh, it's fine to be a genius of course
+But keep that old horse
+Before the cart
+[SMOKEY]
+Who minds those pop bottles flyin'?
+[VERNON]
+The hisses and the boos
+[VAN BUREN]
+The team has been consistent
+[ROCKY]
+Yeah, we always lose
+[THREE BOYS]
+But we're laughin' cause... We've got heart
+[ALL FOUR BOYS]
+We've got heart... We've got heart
+
+I was running late for work
+So I didn't change my shirt
+The evening's drinks left a lingering taste in my mouth
+And when I left you were fast asleep
+Tangled in the sheets
+And on the bus I could have sworn 
+It was all a dream
+And it didn't happen to me
+And then I felt the scrapes
+From the slippery subway grate
+Oh, how you laughed
+At my complete lack of grace
+But I could not recall
+A more perfect fall
+'Cause when I looked up into your eyes
+It didn't hurt at all
+And I thought, be still my heart
+This could be a brand new start with you
+And it will be clear
+If I wake up and you're still here 
+With me in the morning
+And I thought, be still my heart
+This could be a brand new start with you
+And it will be clear
+If I wake up and you're still here 
+With me in the morning
+Be still my heart
+This could be a brand new start with you
+And it will be clear
+If I wake up and you're still here 
+With me in the morning
+
+Nothing you could say could tear me away from my guy,
+(My guy)
+Nothing you could do 'cause I'm stuck like glue to my guy.
+(My guy)
+I'm sticking to my guy like a stamp to a letter,
+Like birds of a feather we stick together,
+I'm tellin' you from the start I can't be torn apart from my guy.
+Nothing you could do could make me untrue to my guy,
+(My guy)
+Nothing you could buy could make me tell a lie to my guy.
+(My guy)
+I gave my guy my word of honor to be faithful, and I'm gonna,
+You best be believing I won't be deceiving my guy.
+As a matter of opinion I think he's tops,
+My opinion is he's the cream of the crop;
+As a matter of taste to be exact he's my ideal as a matter of fact.
+No muscle-bound man could take my hand from my guy.
+(My guy)
+No handsome face could ever take the place of my guy.
+(My guy)
+He may not be a movie star, but when it comes to bein' happy we are.
+There's not a man today who could take me away from my guy.
+No muscle-bound man could take my hand from my guy.
+(My guy)
+No handsome face could ever take the place of my guy.
+(My guy)
+He may not be a movie star, but when it comes to bein' happy we are.
+There's not a man today who could take me away from my guy.
+(What you say, Tell me more)
+No muscle-bound man could take my hand from my guy.
+(My guy)
+No handsome face could ever take the place of my guy.
+(My guy)
+He may not be a movie star, but when it comes to bein' happy we are.
+
+Ooh...ooh...ooh.. 
+Ooh...ooh...ooh.. 
+
+Are you ready for the time of your life 
+It's time to stand up and fight 
+(It's alright) It's alright (It's alright, it's alright) 
+Hand in hand we'll take a caravan 
+To the motherland 
+
+One by one we're gonna stand with the pride 
+One that can't be denied 
+(Stand up, stand up, stand up, stand up) 
+From the highest mountain, and valley low 
+We'll join together, with hearts of gold 
+
+Now the children of the world can see 
+There's a better way for us to be 
+The place where mankind was born 
+Is so neglected and torn... torn apart 
+
+Every woman, every man 
+Join the caravan of love (Stand up, stand up, stand up) 
+Everybody take a stand 
+Join the caravan of love 
+
+I'm your brother 
+I'm your brother, don't you know 
+I'm your brother 
+I'm your brother, don't you know 
+
+We'll be living in a world of peace 
+In a day when everyone is free 
+We'll bring the young and the old 
+Won't you let your love flow from your heart 
+
+Every woman, every man 
+Join the caravan of love (Stand up, stand up, stand up) 
+Everybody take a stand 
+Join the caravan of love 
+
+I'm your brother 
+I'm your brother, don't you know 
+I'm your brother 
+I'm your brother, don't you know 
+
+Now the children of the world can see 
+There's a better for us to be 
+The place where mankind was born 
+Is so neglected and torn... torn apart 
+
+Every woman, every man 
+Join the caravan of love (Stand up, stand up, stand up) 
+Everybody take a stand 
+Join the caravan of love 
+
+Are you ready for the time of your life 
+(Are you re
+
+Sometimes I feel so happy
+Sometimes I feel so sad
+Sometimes I feel so happy
+But mostly you just make me mad
+Baby, you just make me mad
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Thought of you as my mountain top
+Thought of you as my peak
+A thought of you as everything
+I've had, but couldn't keep
+I've had, but couldn't keep
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Skip a life completely
+Stuff it in a cup
+They said, money is like us in time
+It lies, but can't stand up
+Down for you is up
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+It was good what we did yesterday
+And I'd do it once again
+The fact that you are married
+Only proves you're my best friend
+But it's truly, truly a sin
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+If I could make the world as pure
+And strange as what I see
+I'd put you in a mirror
+I'd put in front of me
+I'd put in front of me
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+Linger on your pale blue eyes
+
+Ah ah uh uh
+Who's sorry now?
+Who's sorry now?
+Whose heart is achin' for breakin' each vow?
+Who's sad and blue, who's cryin' too?
+Just like I cried over you
+
+(Ah ah uh uh) right to the end, just like a friend
+I tried to warn you somehow
+You had your way, now you must pay
+I'm glad that you're sorry now
+
+(Ah ah ah) right to the end, just like a friend
+I tried to warn you somehow
+You had your way, now you must pay
+I'm glad that you're sorry now
+
+Well, my friends, the time has come
+Raise the roof and have some fun
+Throw away the work to be done
+Let the music play on
+Everybody sing, everybody dance
+Lose yourself in wild romance, we going to
+Parti', karamu', fiesta, forever
+Come on and sing along
+We're going to parti', karamu', fiesta, forever
+Come on and sing along
+
+All night long (all night), all night (all night)
+All night long (all night), all night (all night)
+All night long (all night), all night (all night)
+All night long (all night), ooh yeah (all night)
+
+People dancing all in the street
+See the rhythm all in their feet
+Life is good, wild and sweet
+Let the music play on
+Feel it in your heart and feel it in your soul
+Let the music take control, we going to
+Parti', liming, fiesta, forever
+Come on and sing my song
+
+All night long (all night) oh (all night)
+All night long (all night) yeah (all night)
+All night long (all night) yeah (all night)
+All night long (all night) (all night)
+
+Yeah, once you get started you can't sit down
+Come join the fun, it's a merry-go-round
+Everyone's dancing their troubles away
+Come join our party, see how we play
+
+Tom bo li de say de moi ya, yeah, jambo jumbo
+Way to parti' o we goin' oh, jambali
+Tom bo li de say de moi ya, yeah, jumbo jumbo
+
+Oh, oh, oh, oh, yes
+We're gonna have a party, yeah, ugh
+All night long (all night), all night (all night)
+All night long (all night), yeah (all night)
+All night long (all night), all night (all night)
+All night long (all night)
+
+Everyone you meet, they're jamming in the street, all night long (all night)
+Yeah, I said, everyone you meet, they're jamming in the street (all night)
+All night long (all night)
+Feel good, feel good (all night)
+
+Sometimes the snow comes down in June
+Sometimes the sun goes 'round the moon
+I see the passion in your eyes
+Sometimes it's all a big surprise
+'Cause there was a time when all I did was wish
+You'd tell me this was love
+It's not the way I hoped or how I planned
+But somehow it's enough
+
+And now we're standing face to face
+Isn't this world a crazy place
+Just when I thought our chance had passed
+You go and save the best for last
+
+All of the nights you came to me
+When some silly girl had set you free
+You wondered how you'd make it through
+I wondered what was wrong with you
+
+'Cause how could you give your love to someone else
+And share your dreams with me
+Sometimes the very thing you're looking for
+Is the one thing you can't see
+
+And now we're standing face to face
+Isn't this world a crazy place
+Just when I thought our chance had passed
+You go and save the best for last
+
+Sometimes the very thing you're looking for
+Is the one thing you can't see
+
+Sometimes the snow comes down in June
+Sometimes the sun goes 'round the moon
+Just when I thought our chance had passed
+You go and save the best for last
+
+You went and saved the best for last
+
+I'm not a perfect person
+There's many thing I wish I didn't do
+But I continue learning
+I never meant to do those things to you
+And so I have to say before I go
+That I just want you to know
+
+I've found a reason for me
+To change who I used to be
+A reason to start over new
+And the reason is you
+
+I'm sorry that I hurt you
+It's something I must live with everyday
+And all the pain I put you through
+I wish I could take it all away
+And be the one who catches all your tears
+That's why I need you to hear
+
+I've found a reason for me
+To change who I used to be
+A reason to start over new
+And the reason is you (x4)
+
+I'm not a perfect person
+I never meant to do those things to you
+And so I have to say before I go
+That I just want you to know
+
+I've found a reason for me
+To change who I used to be
+A reason to start over new
+And the reason is you
+
+I've found a reason to show
+A side of me you didn't know
+A reason for all that I do
+And the reason is you
+
+I've never seen you looking so lovely as you did tonight
+I've never seen you shine so bright
+I've never seen so many men ask you if you wanted to dance
+They're looking for a little romance, given half a chance
+And I have never seen that dress you're wearing
+Or the highlights in your hair that catch your eyes
+I have been blind
+
+The lady in red is dancing with me, cheek to cheek
+There's nobody here, it's just you and me
+It's where I want to be
+But I hardly know this beauty by my side
+I'll never forget the way you look tonight
+
+I've never seen you looking so gorgeous as you did tonight
+I've never seen you shine so bright, you were amazing
+I've never seen so many people want to be there by your side
+And when you turned to me and smiled, it took my breath away
+And I have never had such a feeling
+Such a feeling of complete and utter love, as I do tonight
+
+The lady in red is dancing with me, cheek to cheek
+There's nobody here, it's just you and me
+It's where I want to be
+But I hardly know this beauty by my side
+I'll never forget the way you look tonight
+
+I never will forget the way you look tonight
+The lady in red, the lady in red
+The lady in red, my lady in red
+
+I love you
+
+Kiss me, honey, honey, kiss me 
+Thrill me, honey, honey, thrill me 
+Don't care even if I blow my top 
+But, honey (ah hmm) honey, don't stop 
+I'd like to play a little game with you 
+A little game especially made for two 
+If you come close then I will show you how 
+Closer, closer, now 
+
+Kiss me, honey, honey, kiss me 
+Thrill me, honey, honey, thrill me 
+Don't care even if I blow my top 
+But, honey (ah hmm) honey, don't stop 
+
+We've never played this little game before 
+If you relax then you'll enjoy it more 
+Just settle down and let me teach you how 
+Closer, closer, now 
+
+Kiss me, honey, honey, kiss me 
+Thrill me, honey, honey, thrill me 
+Don't care even if I blow my top 
+But, honey (ah hmm) honey, don't stop 
+(But, honey, honey, don't stop) 
+
+You kiss so well my lips begin to burn 
+And I can tell I've got a lot to learn 
+So hold me close and darling show me how 
+Closer, closer, now 
+Kiss me, honey, honey, kiss me 
+Thrill me, honey, honey, thrill me 
+Don't care even if I blow my top 
+But, honey, honey, don't stop 
+But, honey, honey, don't stop 
+How sweet it is to be loved by you
+How sweet it is to be loved by you
+I needed the shelter of someone's arms and there you were
+I needed someone to understand my ups and downs
+and there you were
+With sweet love and devotion
+deeply touching my emotion
+I want to stop and thank you baby
+I just want to stop and thank you baby
+How sweet it is to be loved by you
+How sweet it is to be loved by you
+I close my eyes at night
+wondering where would I be without you in my life
+Everything I did was just a bore,
+everywhere I went it seems I'd been there before
+But you brightened up for me all of my days
+With a love so sweet in so many ways
+I want to stop and thank you baby
+I want to stop and thank you baby
+How sweet it is to be loved by you
+How sweet it is to be loved by you
+You were better to me than I've been to myself
+For me, there's you and there ain't nobody else
+I want to stop and thank you baby
+I just want to stop and thank you baby
+How sweet it is to be loved by you
+How sweet it is to be loved by you
+She was born in November 1963
+The day Aldous Huxley died
+And her mama believed
+That every man could be free
+So her mama got high, high, high
+And her daddy marched on Birmingham
+Singing mighty protest songs
+And he pictured all the places
+That he knew that she belonged
+But he failed and taught her young
+The only thing she's need to carry on
+He taught her how to
+Run baby run baby run baby run
+Baby run
+Past the arms of the familiar
+And their talk of better days
+To the comfort of the strangers
+Slipping out before they say
+so long
+Baby loves to run
+She counts out all her money
+In the taxi on the way to meet her plane
+Stares hopeful out the window
+At the workers fighting
+Through the pouring rain
+She's searching through the stations
+For an unfamiliar song
+And she's pictures all the places
+Where she knows she still belongs
+And she smiles the secret smile
+Because she knows exactly how
+To carry on
+So run baby run baby run baby run
+Baby run
+From the old familiar faces and
+Their old familiar ways
+To the comfort of the strangers
+Slipping out before they say
+So long
+Baby loves to run
+Making my way down town
+Walking fast
+Faces pass
+And I'm home bound
+Staring blankly ahead
+Just making my way
+Making a way
+Through the crowd
+And I need you
+And I miss you
+And now I wonder
+If I could fall
+Into the sky
+Do you think time
+Would pass me by
+'Cause you know I'd walk a thousand miles
+If I could just see you, tonight
+It's always times like these
+When I think of you
+And I wonder If you ever think of me
+'Cause everything's so wrong
+And I don't belong
+Living in
+Your precious memory
+'Cause I need you
+And I miss you and now I wonder
+If I could fall
+Into the sky
+Do you think time
+Would pass me by, oh
+'Cause you know I'd walk a thousand miles
+If I could just see you tonight
+And I, I don't want to let you know I
+I drown in your memory I
+I don't want to let this go
+I, I don't
+Making my way down town walking fast
+Faces pass
+And I'm home bound
+Staring blankly ahead
+Making my way
+Making a way
+Through the crowd
+And I still need you
+And I still miss you
+And now I wonder
+If I could fall into the sky
+Do you think time, would pass us by
+'Cause you know I'd walk a thousand miles
+If I could just see you, now
+If I could fall into the sky
+Do you think time would pass me by
+'Cause you know I'd walk a thousand miles
+If I could just see you
+If I could just hold you, tonight
+If I could turn back time
+If I could find a way
+I'd take back those words that'll hurt you and you'd stay
+I don't know why I did the things I did
+I don't know why I said the things I said
+Love's like a knife it can cut deep inside
+Words are like weapons, they wound sometimes
+I didn't really mean to hurt you
+I didn't want to see you go
+I know I made you cry, but baby
+If I could turn back time
+If I could find a way
+I'd take back those words that'd hurt you
+And you'd stay
+If I could reach the stars
+I'd give 'em all to you
+Then you'd love me, love me, like you used to do
+If I could turn back time
+My world was shattered I was torn apart
+Like someone took a knife and drove it deep in my heart
+You walked out that door I swore that I didn't care
+But I lost everything darling then and there
+Too strong to tell you I was sorry
+Too proud to tell you I was wrong
+I know that I was blind
+And darling
+If I could turn back time
+If I could find a way
+I'd take back those words that'll hurt you
+And you'd stay
+If I could reach the stars
+I'd give them all to you
+Then you'd love me, love me, like you used to do, oh
+If I could turn back time
+If I could turn back time
+If I could turn back time, whoa baby
+I didn't really mean to hurt you
+I didn't want to see you go
+I know I made you cry, but baby
+If I could turn back time
+If I could find a way
+I'd take back those words that hurt you
+If I could reach the stars
+I'd give 'em all to you
+Then you'd love me, love me, like you used to do
+If I could turn back time
+If I could find a way
+Then maybe, maybe, maybe
+You'd stay
+If I could reach the stars
+I'd give 'em all to you
+You drink your coffee 
+I sip my tea 
+And we're sitting here, playing so cool
+Thinking, 'What will be, will be' 
+And it's getting kind of late now 
+Oh, I wonder if you'll stay now 
+Stay now, stay now, stay now 
+Or will you just politely say 'Goodnight'? 
+I move a little closer to you
+Not knowing quite what to do and I'm 
+Feeling all fingers and thumbs 
+I spill my tea, oh silly me
+It's getting kind of late now 
+I wonder if you'll stay now
+Stay now, stay now, stay now
+Or will you just politely say 'Goodnight'? 
+And then we touch, much too much
+This moment has been waiting for a long, long time
+Makes me shiver
+Makes me quiver
+This moment I am so unsure
+This moment I have waited for
+Well is it something you've been waiting for
+Waiting for too? 
+Take off your eyes 
+Bare your soul
+Gather me to you and make me whole 
+Tell me your secrets 
+Sing me the song
+Sing it to me in the silent tongue 
+It's getting kind of late now 
+I wonder if you'll stay now
+Stay now, stay now, stay now
+Or will you just politely say 'Goodnight'
+Come with me, my love
+To the sea, the sea of love
+I wanna tell you just how much I love you
+Do you remember when we met
+That's the day I knew you were my pet
+I wanna tell you, oh, how much I love you
+Come with me to the sea of love
+Do you remember when we met
+That's the day I knew you were my pet
+I wanna tell you, oh, how much I love you
+Come with me to the sea, the sea of love
+Your lies won't leave me alone
+You used to say you loved me did ya
+Why'd you do me this way
+It didn't have to be that way
+I got your message on the phone
+I hung on every single line
+You told me what we had was only business
+Hurt me so bad I had to sit down with the sickness
+Oh yeah
+Your lies won't leave me alone
+Tore the phone out the wall and it's still ringin'
+Wreck the room and curtains ain't hangin' baby
+Guitar ain't playin'
+Your lies won't leave me alone
+Look at your picture in the room I can see you were
+Never happy with me baby
+All my uncertainty is easy to see
+How you're killin' me, cause
+I got those bills you would not pay
+The cost of our love is way too high and I just keep on
+Payin' baby
+Why'd you say you loved me - walk around and carry on
+Hurting 'bout your love is gone, the song I sing is sad
+And long, wonder if you are alone
+I don't know if I belong
+Your lies won't leave me - alone
+Loneliness is the coat you wear
+A deep shade of blue is always there
+The sun ain't gonna shine anymore
+The moon ain't gonna rise in the sky
+Tears are always clouding your eyes
+When you're without love
+Baby
+Emptiness is the place you're in
+Nothing to lose, but no more to win
+The sun ain't gonna shine anymore
+The moon ain't gonna rise in the sky
+Tears are always clouding your eyes
+When you're without love
+Lonely
+Without you
+Baby
+Oh, I need you
+I can't go on
+The sun ain't gonna shine anymore
+The moon ain't gonna rise in the sky
+Tears are always clouding your eyes
+The sun ain't gonna shine anymore
+When you're without love
+The sun ain't gonna shine anymore
+The sun ain't gonna shine anymore
+Not anymore
+The sun ain't gonna shine anymore
+Bring it back, baby
+The sun ain't gonna shine anymore
+Oh, baby
+It's hard to remember how it felt before
+Now I found the love of my life
+Passes things, get more comfortable
+Everything is going right
+And after all the obstacles
+It's good to see you now with someone else
+And it's such a miracle that you and me are still good friends
+After all that we've been through
+I know we're cool
+I know we're cool
+We used to think it was impossible
+Now you call me by my new last name
+Memories seem like so long ago
+Time always kills the pain
+Remember Harbor Boulevard
+The dreaming days where the mess was made
+Look how all the kids have grown, oh
+We have changed but we're still the same
+After all that we've been through
+I know we're cool
+I know we're cool
+Yeah, I know we're cool
+And I'll be happy for you
+If you can be happy for me
+Circles and triangles
+And now we're hanging out with your new girlfriend
+So far from where we've been
+I know we're cool
+I know we're cool
+See-cool, I know we're cool
+I know we're cool
+Now that I've lost everything to you
+You say you want to start something new
+And it's breaking my heart you're leaving
+Baby, I'm grieving
+But if you want to leave, take good care
+Hope you have a lot of nice things to wear
+But then a lot of nice things turn bad out there
+Oh baby baby it's a wild world
+It's hard to get by just upon a smile
+Oh baby baby it's a wild world
+I'll always remember you like a child, girl
+You know I've seen a lot of what the world can do
+And it's breaking my heart in two
+'Cause I never want to see you sad girl
+Don't be a bad girl
+But if you want to leave take good care
+Hope you make a lot of nice friends out there
+But just remember there's a lot of bad and beware
+Beware
+Oh baby baby it's a wild world
+It's hard to get by just upon a smile
+Oh baby baby it's a wild world
+And I'll always remember you like a child, girl
+Baby I love you, but if you want to leave take good care
+Hope you make a lot of nice friends out there
+But just remember there's a lot of bad
+And beware, beware
+Oh baby baby it's a wild world
+It's hard to get by just upon a smile
+Oh baby baby it's a wild world
+And I'll always remember you like a child, girl
+There you go
+Flashing fever from your eyes
+Hey babe, come over here and shut them tight
+I'm not denying
+We're flying above it all
+Hold my hand, don't let me fall
+You've such amazing grace
+I've never felt this way
+Oh, show me heaven
+Cover me
+Leave me breathless
+Oh, show me heaven, please
+Here I go
+I'm shaking just like the breeze
+Hey babe, I need your hand to steady me
+I'm not denying
+I'm frightened as much as you
+Though I'm barely touching you
+I've shivers down my spine
+And it feels divine
+Oh, show me heaven
+Cover me
+Leave me breathless
+Oh, show me heaven, please
+If you know what it's like
+To dream a dream
+Baby, hold me tight
+And let this be, oh
+Oh, show me heaven
+Cover me
+Leave me breathless
+Oh, show me heaven, please
+Along she came, with her picture
+Put it in a frame, so I won't miss her
+Got on a plane, from London; Heathrow
+It seems such a shame, yea
+I feel her. Slipping through my fingers
+Now she's gone, I'm sleeping with the light on
+And sharks swim through my veins now, that she's gone
+I'm sleeping with the light on
+Heard she's engaged, but to her best friend
+No ones to blame, here's where it all ends
+And I feel the pain, 'cause I'm without her
+I feel the pain
+I feel her. Slipping through my fingers
+Now she's gone, I'm sleeping with the light on
+And sharks swim through my veins now, that she's gone
+I'm sleeping with the light on
+I see the sight, with a different light
+Words cannot describe the way I'm feeling
+'Cause I've been searching in my head
+For the words I thought she'd said
+For too long
+I feel her. Slipping through my fingers
+Now she's gone, I'm sleeping with the light on
+And sharks swim through my veins now, that she's gone
+I'm sleeping with the light on
+I feel her. Slipping through my fingers
+Now she's gone, I'm sleeping with the light on
+And sharks swim through my veins now, that she's gone
+I'm sleeping with the light on
+I feel her. Slipping through my fingers
+Now she's gone, I'm sleeping with the light on
+And sharks swim through my veins now, that she's gone
+I'm sleeping with the light on
+I could be discontent and chase the rainbows end
+I might win much more but lose all that is mine
+I could be a lot but I know I'm not
+I'm content just with the riches that you bring 
+I might shoot to win and commit the sin
+Of wanting more than I've already got
+I could runaway but I'd rather stay
+In the warmth of your smile lighting up my day
+the one that makes me say, hehe
+'Cause you're the best thing that ever happened to me or my world
+You're the best thing that ever happened, so don't go away
+I might be a king and steal my peoples things
+But I don't go for that power crazy way
+All that I could rule but I don't check for fools
+All that I need is to be left to live my way
+say listen what I say
+I could chase around for nothing to be found
+But why look for something that is never there
+I may get it wrong sometimes but I'll come back in style
+For I realize your love means more than anything
+the song you make me sing, yeah
+Sitting in my class, just drifting away
+Staring into the windows of the world
+I can't hear the teacher, his books don't call me at all
+I don't see the bad boys tryin' to catch some play...
+'cause I love your smile
+I love your smile
+The clock at work says three
+And I wanna be free
+Free to scream, free to bathe, free to paint
+My toes all day
+My boss is lame you know, and so is the pay
+I'm gonna put that new black mini on my charge anyway
+'cause I love your smile
+I love your smile
+Time came and showed me your direction
+Now I know I'll never ever go back
+Taught me that
+I can be a better girl with love you give
+You rock my world
+You dig
+I'm showing
+The life that I'm living
+This is the life that I have
+And it's given to you
+Yeh'and it's true
+La-d-da
+Twinkley d
+do you
+Believe in a girl
+like me
+Shanice is the one
+For you to be with
+But when I'm caught
+All alone
+I start fessing
+It's from a state of depression
+And the thunder clouds of doubt move in
+I begin to wonder "Do you still love me?"
+But after that
+My whole world is beautiful
+Blow branford
+Blow
+Time came and showed me your direction
+Now I know I'll never ever go back
+Taught me that
+I can be a better girl with love you give
+You rock my world
+You dig
+Smile...Pstch
+'cause I love your smile
+I love your smile
+Take the ribbon from your hair
+Shake it loose and let it fall
+Layin' soft upon my skin
+Like the shadows on the wall
+Come and lay down by my side
+Till the early mornin' light
+All I'm takin' is your time
+Help me make it through the night
+I don't care who's right or wrong
+I don't try to understand
+Let the devil take tomorrow
+Lord tonight I need a friend
+Yesterday is dead and gone
+And tomorrow's out of sight
+And it's sad to be alone
+Oh, why you look so sad?
+Tears are in your eyes
+Come on and come to me now
+Don't be ashamed to cry
+Let me see you through
+Cause I've seen the dark side too
+When the night falls on you
+You don't know what to do
+Nothing you confess
+Could make me love you less
+I'll stand by you
+I'll stand by you
+Won't let nobody hurt you
+I'll stand by you
+So if you're mad, get mad
+Don't hold it all inside
+Come on and talk to me now
+Hey, what you got to hide?
+I get angry too
+Well I'm a lot like you
+When you're standing at the crossroads
+And don't know which path to choose
+Let me come along
+Cause even if you're wrong
+I'll stand by you
+I'll stand by you
+Won't let nobody hurt you
+I'll stand by you
+Take me in, into your darkest hour
+And I'll never desert you
+I'll stand by you
+And when
+When the night falls on you baby
+You're feeling all alone
+You won't be on your own
+I'll stand by you
+I'll stand by you
+Won't let nobody hurt you
+I'll stand by you
+Take me in, into your darkest hour
+And I'll never desert you
+I'll stand by you
+I'll stand by you
+Won't let nobody hurt you
+I'll stand by you
+Won't let nobody hurt you
+I'll stand by you
+Mm--"Is she really going out with him?
+"Well, there she is, Let's ask her"
+"Betty, is that Jimmy's ring you're wearing?"
+"Mm-hm"
+"Gee, it must be great riding with him"
+"Is he picking you up after school today?"
+"Mm-mm"
+"By the way, where did you meet him?"
+"I met him at the candy store
+He turned around and smiled at me
+You get the picture
+"Yes, we see"
+That's when I fell for the leader of the pack
+My folks were always putting him down
+They said he came from the wrong side of town
+They told me he was bad but I knew he was sad
+That's why I fell for the leader of the pack
+One day my dad said find someone new
+I had to tell my Jimmy we're through
+He stood there and asked me why, but all I could do was cry
+I'm sorry I hurt you, the leader of the pack
+Do do
+He sort of smiled and kissed me good bye
+The tears were beginning to show
+As he drove away on that rainy night,
+I begged him to go slow, whether he heard,
+I'll never know Look out! Look out! Look out!
+I felt so helpless, what could I do
+Remembering all the things we'd been through?
+In school they all stop and stare
+I can't hide the tears, but I don't care
+I'll never forget him, the leader of the pack
+Ooh, the leader of the pack now he's gone
+the leader of the pack now he's gone
+the leader of the pack now he's gone
+Heartbeat
+Why do you miss when my baby kisses me
+Heartbeat
+Why does a love kiss stay in my memory
+Piddly pat
+I know that new love thrills me
+I know that true love will be
+Heartbeat
+Why do you miss when my baby kisses me
+Heartbeat
+Why do you skip when my babies lips meet mine
+Heartbeat
+Why do you flip and give me a skip each sign
+Piddly pat
+And sing to me love's story
+And bring to me love's glory
+Heartbeat
+Why do you miss when my baby kisses me
+I feel like I'm dragging you down a one way street 
+I don't know which ways up 
+All I ask of you is to stay on your feet 
+That should be enough 
+If we stand around it could pass us by 
+We could give up now, and never even try
+To breathe in life and breathe out 
+Like tomorrow is today 
+Breathe in life and breathe out 
+It's not so long to wait 
+Breathe in life and breathe out 
+Wipe the dust from your sweet smile 
+An breathe in life
+I just want something real I can hold onto 
+I believe its near 
+Life's too short to know the truth 
+Maybe it's already hear 
+We could throw ourselves into the fire 
+We could give up now and never even try
+To breathe in life and breathe out 
+Like tomorrow is today 
+Breathe in life and breathe out 
+It's not so long to wait 
+Breathe in life and breathe out 
+Wipe the dust from your sweet smile 
+An breathe in life
+We're chasing something we've dreamed of 
+is not always out of reach
+It's never far away from us 
+'cause I believe that
+To breathe in life and breathe out 
+Like tomorrow is today 
+Breathe in life and breathe out 
+It's not so long to wait 
+Breathe in life and breathe out 
+Wipe the dust from your sweet smile 
+An breathe in life
+To breathe in life and breathe out 
+Like tomorrow is today 
+Breathe in life and breathe out 
+It's not so long to wait 
+Breathe in life and breathe out 
+Wipe the dust from your sweet smile 
+An breathe in life
+Oh, my love, my darling
+I've hungered for your touch
+A long, lonely time
+Time goes by so slowly
+And time can do so much
+Are you still mine?
+I need your love
+I need your love
+God speed your love to me
+Lonely rivers flow
+To the sea, to the sea
+To the open arms of the sea
+Lonely rivers sigh
+"Wait for me, wait for me"
+I'll be coming home, wait for me
+Oh, my love, my darling
+I've hungered, for your touch
+A long, lonely time
+Time goes by so slowly
+And time can do so much
+Are you still mine?
+I need your love
+I need your love
+God speed your love to me
+Lonely mountains gaze
+At the stars, at the stars
+Waiting for the dawn of the day
+All alone I gaze
+At the stars, at the stars
+Dreaming of my love far away
+Nobody knows it but you've got a secret smile
+And you use it only for me
+Nobody knows it but you've got a secret smile
+And you use it only for me
+So use it and prove it
+Remove this whirling sadness
+I'm losing, I'm bluesing
+But you can save me from madness
+Nobody knows it but you've got a secret smile
+And you use it only for me
+Nobody knows it but you've got a secret smile
+And you use it only for me
+So save me I'm waiting
+I'm needing, hear me pleading
+And soothe me, improve me
+I'm grieving, I'm barely believing now, now
+When you are flying around and around the world
+And I'm lying and lonely
+I know there's something sacred and free reserved
+And received by me only
+Nobody knows it but you've got a secret smile
+And you use it only for me
+Nobody knows it but you've got a secret smile
+And you use it only for me
+So use it and prove it
+Remove this whirling sadness
+I'm losing, I'm bluesing
+But you can save me from madness, now, now
+When you are flying around and around the world
+And I'm lying and lonely
+I know there's something sacred and free reserved
+And received by me only
+Nobody knows it but you've got a secret smile
+And you use it only for me
+Nobody knows it but you've got a secret smile
+Nobody knows it, nobody knows it, nobody knows it
+But you've got a secret
+Nobody knows it, nobody knows it, nobody knows it
+But you've got a secret
+Nobody knows it, nobody knows it, nobody knows it
+But you've got a secret
+Nobody knows it, nobody knows it, nobody knows it
+But you've got a secret
+Nobody knows it, nobody knows it...
+No matter what they tell us 
+No matter what they do 
+No matter what they teach us 
+What we believe is true 
+No matter what they call us 
+However they attack 
+No matter where they take us 
+We'll find our own way back 
+I can't deny what I believe 
+I can't be what I'm not 
+I know I'll love forever 
+I know no matter what 
+If only tears were laughter 
+If only night was day 
+If only prayers were answered 
+Then we would hear God say 
+No matter what they tell us 
+No matter what they do 
+No matter what they teach us 
+What we believe is true 
+And I will keep you safe and strong 
+And shelter from the storm 
+No matter where it's barren 
+A dream is being born 
+No matter who they follow 
+No matter where they lead 
+No matter how they judge us 
+I'll be everyone you need 
+No matter if the sun don't shine 
+Or if the skies are blue 
+No matter what the end is 
+My life began with you 
+I can't deny what I believe 
+I can't be what I'm not 
+I know, I know 
+I know this love's forever 
+That's all that matters now 
+No matter what!
+They asked me how I knew
+My true love was true
+I of course replied
+Something here inside cannot be denied
+They said "someday you'll find all who love are blind"
+When your heart's on fire,
+You must realize, smoke gets in your eyes
+So I chaffed them and I gaily laughed
+To think they could doubt my love
+Yet today my love has flown away,
+I am without my love 
+Now laughing friends deride
+Tears I cannot hide
+So I smile and say
+When a lovely flame dies, smoke gets in your eyes
+Smoke gets in your eyes, smoke gets in your eyes
+Knew the signs
+Wasn't right
+I was stupid for a while
+Swept away by you
+And now I feel like a fool
+So confused,
+My heart's bruised
+Was I ever loved by you?
+Out of reach, so far
+I never had your heart
+Out of reach,
+Couldn't see
+We were never
+Meant to be
+Catch myself
+From despair
+I could drown
+If I stay here
+Keeping busy everyday
+I know I will be OK
+But I was
+So confused,
+My heart's bruised
+Was I ever loved by you?
+Out of reach, so far
+I never had your heart
+Out of reach,
+Couldn't see
+We were never
+Meant to be
+So much hurt,
+So much pain
+Takes a while
+To regain
+What is lost inside
+And I hope that in time,
+You'll be out of my mind
+And I'll be over you
+But now I'm
+So confused,
+My heart's bruised
+Was I ever loved by you?
+Out of reach,
+So far
+I never had your heart
+Out of reach,
+Couldn't see
+We were never
+Meant to be
+Out of reach,
+So far
+You never gave your heart
+In my reach, I can see
+There's a life out there
+For me
+I see trees of green, red roses too
+I see them bloom for me and you
+And I think to myself what a wonderful world
+I see skies of blue and clouds of white
+The bright blessed day, the dark sacred night
+And I think to myself what a wonderful world
+The colors of the rainbow so pretty in the sky
+Are also on the faces of people going by
+I see friends shaking hands saying how do you do
+They're really saying I love you
+I hear babies crying, I watch them grow
+They'll learn much more than I'll never know
+And I think to myself what a wonderful world
+Yes I think to myself what a wonderful world
+I follow the Moskva
+Down to Gorky Park
+Listening to the wind of change
+An August summer night
+Soldiers passing by
+Listening to the wind of change
+The world is closing in
+Did you ever think
+That we could be so close, like brothers
+The future's in the air
+I can feel it everywhere
+Blowing with the wind of change
+Take me to the magic of the moment
+On a glory night
+Where the children of tomorrow dream away 
+In the wind of change
+Walking down the street
+Distant memories
+Are buried in the past forever
+I follow the Moskva
+Down to Gorky Park
+Listening to the wind of change
+Take me to the magic of the moment
+On a glory night
+Where the children of tomorrow share their dreams 
+With you and me
+Take me to the magic of the moment
+On a glory night 
+Where the children of tomorrow dream away 
+In the wind of change 
+The wind of change
+Blows straight into the face of time
+Like a stormwind that will ring the freedom bell
+For peace of mind
+Let your balalaika sing
+What my guitar wants to say
+Take me to the magic of the moment
+On a glory night
+Where the children of tomorrow share their dreams
+With you and me 
+Take me to the magic of the moment
+On a glory night
+Where the children of tomorrow dream away
+In the wind of change 
+Say you, say me say it for always
+That's the way it should be
+Say you, say me say it together
+Naturally
+I had a dream I had an awesome dream
+People in the park playing games in the dark
+And what they played was a masquerade
+And from behind of walls of doubt a voice was crying out
+Say you, say me it for always
+That's the way it should be
+Say you, say me say it together
+Naturally
+As we go down life's lonesome highway
+Seems the hardest thing to do is to find a friend or two
+That helping hand
+Some one who understands
+That when you feel you've lost your way
+You've got some one there to say I'll show you
+Say you, say me it for always
+That's the way it should be
+Say you, say me say it together
+Naturally
+So you think you know the answers, Oh no
+Well the whole world has got you dancing
+That's right, I'm telling you
+It's time to start believing oh yes
+Believing who you are
+You are a shining star
+Say you, say me it for always
+Oh that's the way it should be
+Say you, say me say it together
+Naturally
+Say it together, naturally
+Saying I love you
+Is not the words I want to hear from you
+It's not that I want you
+Not to say, but if you only knew
+How easy it would be to show me how you feel
+More than words is all you have to do to make it real
+Then you wouldn't have to say that you love me
+'Cause I'd already know
+What would you do if my heart was torn in two
+More than words to show you feel
+That your love for me is real
+What would you say if I took those words away
+Then you couldn't make things new
+Just by saying I love you
+More than words
+Now that I've tried to talk to you and make you understand
+All you have to do is close your eyes
+And just reach out your hands and touch me
+Hold me close don't ever let me go
+More than words is all I ever needed you to show
+Then you wouldn't have to say that you love me
+'Cause I'd already know
+What would you do if my heart was torn in two
+More than words to show you feel
+That your love for me is real
+What would you say if I took those words away
+Then you couldn't make things new
+Just by saying I love you
+More than words
+You must remember this
+A kiss is still a kiss
+A sigh is just a sigh
+The fundamental things apply
+As time goes by
+And when two lovers woo
+They still say, I love you
+On this you can rely
+No matter what the future brings
+As time goes by
+Moonlight and love songs
+Never out of date
+Hearts full of passion
+Jealousy and hate
+Woman needs man
+And man must have his mate
+On this you can deny
+It's still the same old story
+A fight for love and glory
+A case of do or die
+The world will always welcome lovers
+As time goes by
+Moonlight and love songs
+Never out of date
+Hearts full of passion
+Jealousy and hate
+Woman needs man
+And man must have his mate
+That no one can deny
+You must remember this
+A kiss is still a kiss
+A sigh is just a sigh
+The fundamental things apply
+As time goes by
+Girl when you hold me, how you control me
+You bend and you fold me, anyway you please
+It must be easy for you, the loving things that you do
+But just a pastime for you, I could never be
+And I never know, girl 
+If I should stay or go
+'Cos the games that you play 
+Keep driving me away
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love
+Kisses and caresses, are only minor tests, babe
+Of love lead to stresses, between a woman and a man
+So if love everlasting, isn't what you're asking
+I'll have to pass, girl, I'm proud to take a stand
+I can't continue guessing 
+Because it's only messing
+With my pride and my mind 
+So write down this time to time
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love
+I'm just a little old-fashioned
+It's take more than physical attraction
+My initial reaction is honey give me love
+Not a facsimile of
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love 
+Don't love me for fun, girl
+Let me be the one, girl
+Love me for a reason
+Let the reason be love

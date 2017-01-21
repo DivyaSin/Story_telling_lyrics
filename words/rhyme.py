@@ -18,9 +18,35 @@ import markov_lyrics
 # from fnmatch import fnmatch
 # from difflib import SequenceMatcher
 
-
 rhyme_entries = nltk.corpus.cmudict.entries()
 pronunciationDictionary = nltk.corpus.cmudict.dict() 
+
+tension_dictionary = {}
+tension_list = []
+with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/tension.txt') as tension_file:
+    flag = True
+    same_value = True
+    val = []
+    for line in tension_file: 
+        if not line.strip():
+            if not tension_dictionary[key]:
+                tension_dictionary[key] = []              
+            else:
+                tension_dictionary.update(tension_dictionary)
+            same_value = True
+        else:        
+            if same_value:
+                key = line.strip()
+                same_value = False
+                tension_dictionary[key] = []
+            else:
+                val = re.split("[ :,()\n ]", line.strip(" "))
+                val = list(filter(None, val))
+                if tension_dictionary[key]:
+                    tension_dictionary[key].append(val)
+                else:
+                    tension_dictionary[key] = [val]
+# pprint.pprint(tension_dictionary)
 
 # dictionary of actions
 action_keys = ['ACT', 'PRE', 'POS', 'TEN', 'TEXT']
@@ -29,7 +55,6 @@ actions_list = []
 
 with open("actions.txt") as actions_file: 
   for line in actions_file:
-
     if line.strip() in action_keys:
         new_key = line.strip()
         action_dictionary[new_key] = []
@@ -88,9 +113,8 @@ def last_word(sentence):
     else:
         return "" 
 
-last_word_sentences = defaultdict(list)
-
 def getMarkovBatch():
+    last_word_sentences = defaultdict(list)
     markov_lyrics.markov()
     corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
     wordlists = PlaintextCorpusReader(corpus_root, '.*')
@@ -135,41 +159,55 @@ def getMarkovBatch():
         last_word_sentences[ lw ].append(sentence)
     # pprint.pprint(last_word_sentences)
     keys = last_word_sentences.keys()
-    # print "\n"
-    # print keys
-    with gzip.open("sentences.gz", "w") as cache_file:
-        cPickle.dump(last_word_sentences, cache_file)
-    return keys
+    print "\n"
+    print keys
+    # with gzip.open("sentences.gz", "w") as cache_file:
+    #     cPickle.dump(last_word_sentences, cache_file)
+    return keys, last_word_sentences
 
 def candidate_sentences(word):
+    print word
     # print "candidate_sentences"
     candidates = []
     word_pronunciation = pronunciationDictionary[word]
     word_pro = word_pronunciation[0]
-    keys = getMarkovBatch()
+    # print word_pro
+    print 
+    print "Markov chain again called"
+    keys, last_word_sentences = getMarkovBatch()
+    print last_word_sentences
     for key in keys:
         try:
             key_pronunciation = pronunciationDictionary[key]
             key_pro = key_pronunciation[0]
+            # print key_pro
             # print key_pronunciation
         except KeyError:
             # print "KeyError"
-            if key[-1].isdigit():
-                continue
-            key_pro = pronunciationDictionary[key[-1].lower()]
+            # if key[-1].isdigit():
+            #     continue
+            # key_pro = pronunciationDictionary[key[-1].lower()]
+            continue
         rhyme_quality = quality_of_rhyme(word_pro, key_pro)
         # print word_pronunciation, key_pronunciation
         # print rhyme_quality
         candidates.append( (rhyme_quality, key) )
-    # print candidates
-    # print candidates.sort()
-    # print candidates.reverse()
-    words = [ key for rhyme_quality, key in candidates if rhyme_quality >= 1]
-    # print words
+    print candidates
+    candidates.sort()
+    candidates.reverse()
+    words = [ key for rhyme_quality, key in candidates if rhyme_quality >= 1 ]
+    print "words"
+    print words
+    
+    print "last_word_sentences"
+    print last_word_sentences
     if words:
-        return last_word_sentences[ words[0].lower() ]
+        good_word = random.choice(words)
+        print last_word_sentences[good_word.lower()]
+        return last_word_sentences[good_word.lower()]  
     else:
-        candidate_sentences(word)
+        # candidate_sentences(word)
+        return ''
 
 def quality_of_rhyme(p1, p2):
     p1 = copy.deepcopy(p1)
@@ -192,12 +230,12 @@ def quality_of_rhyme(p1, p2):
                 quality += 2
     except IndexError:
         pass
-    for i, p in enumerate(p1):    
-        try:
-            if p == p2[i+1]:
-                quality += 1
-        except IndexError:
-            break
+    # for i, p in enumerate(p1):    
+    #     try:
+    #         if p == p2[i+1]:
+    #             quality += 1
+    #     except IndexError:
+    #         break
     # print quality
     return quality
     
@@ -240,6 +278,7 @@ def find_high_priority(candidates, word):
     return new_candidates
 
 def word_rhyme_candidates(word):
+    print word
     word = word.lower()
     candidates = []
     try:
@@ -257,23 +296,29 @@ def word_rhyme_candidates(word):
             quality = quality_of_rhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
+    print
+    # print candidates
     candidates.sort()
     candidates.reverse()
+    print
+    # print candidates
     # best_quality = candidates[0][0]
     # worst_quality = best_quality -1
-    candidates = [ candidate for q, candidate in candidates if q >= 3]
+    candidates = [ candidate for q, candidate in candidates ]
     # candidates = [ candidate for q, candidate in candidates ]
-
-    # print candidates
-    new_candidates = find_high_priority(candidates, word)
-    if not new_candidates:
+    top_candidates = candidates[:50]
+    # candidates_random = random.choice(candidates, 50)
+    # print candidates_random
+    # print top_candidates
+    high_priority_candidates = find_high_priority(candidates, word)
+    if not high_priority_candidates:
         # print "Candidates taken"
         # print candidates
         return candidates
     else:
         # print "New_candidates taken"
         # print new_candidates
-        return new_candidates
+        return high_priority_candidates
 
 def get_pre_score(sentiment_dictionary):
     PRE_list = sentiment_dictionary.get('PRE')
@@ -329,6 +374,34 @@ def get_sentiment_dictionary(pattern, actions_list):
                 sentiment_dictionary = dictionary
     return sentiment_dictionary
 
+def get_sentiment_value(pattern, tension_dictionary):
+    print pattern
+    max_similarity_score = 0
+    sentiment_value = []
+    lc_found = False
+    for key, list in tension_dictionary.items():
+        similarity_score = fuzz.partial_ratio(pattern, key)
+        # print key, list, similarity_score
+        if similarity_score >= max_similarity_score:
+                max_similarity_score = similarity_score
+                sentiment_list = list
+    if not sentiment_list:
+        return 0
+    else:
+        for list in sentiment_list:
+            if list:
+                for symbol in list:
+                    if symbol[0] == '-':
+                        score = -1 * int(symbol[1])
+                    if symbol[0] == '+':
+                        score =  int(symbol[1])
+                    if symbol == 'lc':
+                        lc_found = True
+    if lc_found:
+        return -1 * (score)
+    else:
+        return score
+    
 def get_corpus_score(close_sentences):
     closest_sentences = []
     for line in close_sentences:
@@ -380,7 +453,7 @@ def get_rhyme(sentence):
     pattern = sentence
     # post_tag_list = nltk.pos_tag(sentence.split())
     target_syllables = syllables.sentence_syllables(sentence)
-    tokens = nltk.word_tokenize(sentence) 
+    tokens = nltk.word_tokenize(sentence)
     rhymes = word_rhyme_candidates(last_word(tokens))
     # for syn in wordnet.sysnsets(last_word(tokens)):
     #     for l in syn.lemmas():
@@ -389,7 +462,7 @@ def get_rhyme(sentence):
     candidate_sentence = []
     # if len(tokens) == 1:
     #     return ", ".join(rhymes[:12])
-
+    print "rhymes"
     print rhymes
     for rhyme in rhymes:
         candidate_sentence += candidate_sentences( rhyme )
@@ -415,14 +488,15 @@ def get_rhyme(sentence):
             return "Oho ho ho ho ho"
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
-    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n <= close_number + 1 ] 
+    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-2 <= n <= close_number+2] 
     closest_sentences = get_corpus_score(close_sentences)
-    sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
-    story_score = get_story_score(sentiment_dictionary)
-    # for score, sentence in closest_sentences:
-    #     print score, sentence, story_score
-    #     if score == story_score:
-    #         print sentence
+    # sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
+    # story_score = get_story_score(sentiment_dictionary)
+    # pprint.pprint(tension_dictionary)
+    story_score = get_sentiment_value(pattern, tension_dictionary)
+    # print "sentiment value"
+    # print story_score
+
     rhyme_sentences = []
     # mapping of sentiments 
     if story_score > 0:
@@ -435,6 +509,7 @@ def get_rhyme(sentence):
         # pprint.pprint(rhyme_sentences)
     else:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
+    print "rhyme_sentences"
     print rhyme_sentences 
     if not rhyme_sentences:
         rhyme_sentences = close_sentences
@@ -478,4 +553,4 @@ def generate_lyrics(string):
             pass
     print "################"
 
-generate_lyrics("Trader thoroughly observed Warrior. Then, Trader took a dagger. Jumped towards Warrior. Warrior was attacked. Trader's frame of mind was very volatile. Without thinking, Warrior was charged against. Warrior felt panic.")
+generate_lyrics("Princess and Eagle Knight met. Princess felt a special affection for him. Princess did not want to admit it at the beginning. She fell in love with Eagle Knight. Eagle Knight felt a strong attraction for Lady. Lady was in love with Eagle Knight. Princess realized that Eagle Knight was interested in Lady. So, she got really jealous of her. Princess hit furiously Lady with her fists. In a fast movement, princess wounded Lady. An intense hemorrhage aroused which weakened her. Eagle Knight knew that Lady could die. And that Eagle Knight had to do something about it. Eagle Knight made a potion that Lady drank. She started to recuperate. She got anxiously assaulted. Princess felt panic and ran away to hide in the popocateptl mountain.")
