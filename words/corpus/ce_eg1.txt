@@ -1,0 +1,22 @@
+Eagle Knight were_in_love Virgin
+     Eagle Knight(+3,2):Virgin
+     Virgin(+3,2):Eagle Knight
+ 
+Eagle Knight loved Princess
+     Eagle Knight(+3,1):Princess
+ 
+Virgin kidnapped Princess
+     Eagle Knight(-3,1):Virgin
+     Princess(-3,4):Virgin
+     pr(Princess):Virgin
+     lr(Princess):Virgin+
+     ce2(Eagle Knight):Virgin
+     pd(Virgin):Princess+
+ 
+Eagle Knight clash_emotion_1 Virgin
+ 
+Princess became_free
+ 
+Princess ran_away
+ 
+Eagle Knight the_end

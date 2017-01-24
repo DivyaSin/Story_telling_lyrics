@@ -1,0 +1,44 @@
+Virgin loved Eagle Knight
+     Virgin(+3,1):Eagle Knight
+ 
+Lady kidnapped Eagle Knight
+     Eagle Knight(-3,4):Lady
+     pr(Eagle Knight):Lady
+     lr(Eagle Knight):Lady+
+     pd(Lady):Eagle Knight+
+ 
+Virgin pr_free_1 Eagle Knight
+ 
+Virgin looked_for_and_found Lady
+     pd(Lady):Eagle Knight+
+     pd(Lady):Virgin+
+ 
+Virgin affronted Lady
+     Lady(-2,1):Virgin
+ 
+Virgin fought Lady
+     Virgin(-3,4):Lady
+     Lady(-3,4):Virgin
+     lr(Lady):Virgin+
+     lr(Virgin):Lady+
+     pd(Virgin):Lady+
+ 
+Virgin killed Lady
+     ad(Lady):Virgin
+ 
+Virgin rescued Eagle Knight
+     Eagle Knight(+3,4):Virgin
+     Virgin(+2,1):Virgin
+ 
+Eagle Knight fell_in_love Virgin
+     Eagle Knight(+3,2):Virgin
+ 
+Virgin attempted_to_steal Eagle Knight
+     Eagle Knight(-2,5):Virgin
+     ce2(Eagle Knight):Virgin
+ 
+Eagle Knight clash_emotion_1 Virgin
+ 
+Eagle knight killed Virgin
+     Eagle Knight(-3,1):Eagle Knight
+     ad(Virgin):Eagle Knight
