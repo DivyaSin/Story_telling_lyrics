@@ -7,6 +7,7 @@ import gzip
 import os
 import re
 import unirest
+import string
 from nltk.corpus import PlaintextCorpusReader, wordnet
 import syllables
 import pronouncing
@@ -159,23 +160,23 @@ def getMarkovBatch():
         last_word_sentences[ lw ].append(sentence)
     # pprint.pprint(last_word_sentences)
     keys = last_word_sentences.keys()
-    print "\n"
-    print keys
+    # print "\n"
+    # print keys
     # with gzip.open("sentences.gz", "w") as cache_file:
     #     cPickle.dump(last_word_sentences, cache_file)
     return keys, last_word_sentences
 
 def candidate_sentences(word):
-    print word
+    # print word
     # print "candidate_sentences"
     candidates = []
-    word_pronunciation = pronunciationDictionary[word]
+    word_pronunciation = pronunciationDictionary[word.lower()]
     word_pro = word_pronunciation[0]
     # print word_pro
-    print 
-    print "Markov chain again called"
+    # print 
+    # print "Markov chain again called"
     keys, last_word_sentences = getMarkovBatch()
-    print last_word_sentences
+    # print last_word_sentences
     for key in keys:
         try:
             key_pronunciation = pronunciationDictionary[key]
@@ -192,18 +193,18 @@ def candidate_sentences(word):
         # print word_pronunciation, key_pronunciation
         # print rhyme_quality
         candidates.append( (rhyme_quality, key) )
-    print candidates
+    # print candidates
     candidates.sort()
     candidates.reverse()
     words = [ key for rhyme_quality, key in candidates if rhyme_quality >= 1 ]
-    print "words"
-    print words
+    # print "words"
+    # print words
     
-    print "last_word_sentences"
-    print last_word_sentences
+    # print "last_word_sentences"
+    # print last_word_sentences
     if words:
         good_word = random.choice(words)
-        print last_word_sentences[good_word.lower()]
+        # print last_word_sentences[good_word.lower()]
         return last_word_sentences[good_word.lower()]  
     else:
         # candidate_sentences(word)
@@ -284,7 +285,7 @@ def word_rhyme_candidates(word):
     try:
         pronunciations = pronunciationDictionary[word]
     except KeyError:
-        return word_rhyme_candidates(word[-1])
+        pass
     if pronunciations == []:
         print "No pronunciations"
         return []
@@ -296,11 +297,11 @@ def word_rhyme_candidates(word):
             quality = quality_of_rhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
-    print
+    # print
     # print candidates
     candidates.sort()
     candidates.reverse()
-    print
+    # print
     # print candidates
     # best_quality = candidates[0][0]
     # worst_quality = best_quality -1
@@ -379,6 +380,7 @@ def get_sentiment_value(pattern, tension_dictionary):
     max_similarity_score = 0
     sentiment_value = []
     lc_found = False
+    ce_found = False
     for key, list in tension_dictionary.items():
         similarity_score = fuzz.partial_ratio(pattern, key)
         # print key, list, similarity_score
@@ -397,10 +399,15 @@ def get_sentiment_value(pattern, tension_dictionary):
                         score =  int(symbol[1])
                     if symbol == 'lc':
                         lc_found = True
+                    if symbol == 'ce2':
+                        ce_found = True
     if lc_found:
         return -1 * (score)
+    elif ce_found:
+        return score
     else:
         return score
+
     
 def get_corpus_score(close_sentences):
     closest_sentences = []
@@ -417,7 +424,6 @@ def get_corpus_score(close_sentences):
         except Exception, e:
             print "exception thrown"
             print e
-
         if response.code != 200:
             continue
         t = response.body
@@ -462,10 +468,10 @@ def get_rhyme(sentence):
     candidate_sentence = []
     # if len(tokens) == 1:
     #     return ", ".join(rhymes[:12])
-    print "rhymes"
-    print rhymes
+    # print "rhymes"
+    # print rhymes
     for rhyme in rhymes:
-        candidate_sentence += candidate_sentences( rhyme )
+        candidate_sentence += candidate_sentences( last_word(tokens) )
     # print sentence
     # print candidate_sentence
 
@@ -515,20 +521,66 @@ def get_rhyme(sentence):
         rhyme_sentences = close_sentences
     return random.choice(rhyme_sentences) # need to fix this
 
-def generate_lyrics(string):
-    pat = ('\. +(?=[A-Z ])')
-    text = re.sub(pat, '\n', string)
+def connect_sentences(line, rhyme_line):
+    sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She']
+
+    story_line, replaceable_line = line, rhyme_line
+
+    def replace_all(text, dic):
+        for i, j in dic.iteritems():
+            text = text.replace(i, j)
+        return text
+
+    dic_M = {'Id': 'hed', 'I ': 'he ', 'your': 'his', 'Shes': 'Hes', 'You' :'He', 'you': 'him', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'hewill', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he'  }
+    dic_F = {'Id': 'shed', 'I ': 'she ', 'your': 'her', 'Hes': 'Shes', 'You' :'She', 'you': 'her', 'Im': 'shes', 'theyre': 'shes', 'my': 'her', 'Ill': 'shell', 'am':'is', 'dont': 'doesnt', 'yours': 'her', 'me': 'her', 'mine': 'her', 'we': 'she' }
+    dic_T = {'Id': 'theyd', 'I ': 'they ', 'your': 'their', 'they': 'he', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are', 'me': 'them', 'mine': 'their', 'we': 'they' }
+
+
+    count = 0
+    for word in story_line.split(): 
+        if word in sub_list:
+            count +=1
+            if count == 1:
+                subject = word
+                # print subject
+                if subject in ['Prince', 'Eagle', 'He', 'his', 'him']:
+                    replaceable_word = 'he'
+                else:
+                    replaceable_word = 'she'
+            if count > 1:
+                replaceable_word = 'they'
+                subject = 'them'
+
+    # print replaceable_word
+
+    if replaceable_word == 'he':
+        text = replace_all(replaceable_line, dic_M)
+    if replaceable_word == 'she':
+        text = replace_all(replaceable_line, dic_F)
+    if replaceable_word == 'they':
+        text = replace_all(replaceable_line, dic_T)
+
+    return text
+
+def generate_lyrics(story):
+    # pat = ('\. +(?=[A-Z ])')
+    # text = re.sub(pat, '\n', string)
+    for c in string.punctuation:
+        if c == "\'":
+            continue
+        story = story.replace(c, "\n")
+
     print ""
     print ""
     print "##### STORY #####"
     print ""
-    print text
+    print story
     print ""
     print "#################"
     print 
 
-    text_file = open('story.txt', 'w')  
-    text_file.write(text)
+    text_file = open('story.txt', 'w') 
+    text_file.write(story)
     text_file.close()
 
     with open ("story.txt") as f:
@@ -536,8 +588,12 @@ def generate_lyrics(string):
         line_no = 0
         rhyme_lines = []
         for line in lines:
+            print line
             rhyme_line = get_rhyme(line)
-            rhyme_lines.insert(line_no, rhyme_line)
+            print rhyme_line
+            connected_line = connect_sentences(line, rhyme_line)
+            print connected_line
+            rhyme_lines.insert(line_no, connected_line)
             line_no += 1
 
     print "#### LYRICS ####"
@@ -547,10 +603,11 @@ def generate_lyrics(string):
         lines.insert(2*i+1, v)
     for i,j in enumerate(lines):
         print j.strip("\n")
-        if (i in [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47]):
+        if (i in [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75, 79, 83, 87]):
             print ''
         else:
             pass
     print "################"
 
-generate_lyrics("Princess and Eagle Knight met. Princess felt a special affection for him. Princess did not want to admit it at the beginning. She fell in love with Eagle Knight. Eagle Knight felt a strong attraction for Lady. Lady was in love with Eagle Knight. Princess realized that Eagle Knight was interested in Lady. So, she got really jealous of her. Princess hit furiously Lady with her fists. In a fast movement, princess wounded Lady. An intense hemorrhage aroused which weakened her. Eagle Knight knew that Lady could die. And that Eagle Knight had to do something about it. Eagle Knight made a potion that Lady drank. She started to recuperate. She got anxiously assaulted. Princess felt panic and ran away to hide in the popocateptl mountain.")
+story = "Eagle Knight and Virgin were in love. Eagle Knight admired Princess. He felt a strong affection for her. Virgin was an ambitious person. She wanted power and money in an easy way. Virgin kidnapped Princess and went to Chapultepec forest. Virgin's plan was to ask for an important amount of feathers to liberate Princess. Eagle Knight was emotionally tied to Virgin. But Eagle Knight could not accept his behavior. What could Eagle Knight do? Princess was able to unleash herself. Princess felt panic and ran away to hide in the Popocateptl mountain."
+generate_lyrics(story)
