@@ -408,9 +408,9 @@ def get_sentiment_value(pattern, tension_dictionary):
     else:
         return score
 
-    
 def get_corpus_score(close_sentences):
     closest_sentences = []
+    print close_sentences
     for line in close_sentences:
         # print line
         unirest.timeout(10)
@@ -423,7 +423,7 @@ def get_corpus_score(close_sentences):
             )
         except Exception, e:
             print "exception thrown"
-            print e
+            continue
         if response.code != 200:
             continue
         t = response.body
@@ -522,18 +522,20 @@ def get_rhyme(sentence):
     return random.choice(rhyme_sentences) # need to fix this
 
 def connect_sentences(line, rhyme_line):
-    sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She']
+    sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She', 'Virgin\'s', 'Princess']
 
     story_line, replaceable_line = line, rhyme_line
-
     def replace_all(text, dic):
+        list_of_words = text.split()
         for i, j in dic.iteritems():
-            text = text.replace(i, j)
-        return text
+            for k, word in enumerate(list_of_words):
+                if word == i:
+                    list_of_words[k] = word.replace(word, j)
+        return ' '.join(list_of_words)
 
-    dic_M = {'Id': 'hed', 'I ': 'he ', 'your': 'his', 'Shes': 'Hes', 'You' :'He', 'you': 'him', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'hewill', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he'  }
-    dic_F = {'Id': 'shed', 'I ': 'she ', 'your': 'her', 'Hes': 'Shes', 'You' :'She', 'you': 'her', 'Im': 'shes', 'theyre': 'shes', 'my': 'her', 'Ill': 'shell', 'am':'is', 'dont': 'doesnt', 'yours': 'her', 'me': 'her', 'mine': 'her', 'we': 'she' }
-    dic_T = {'Id': 'theyd', 'I ': 'they ', 'your': 'their', 'they': 'he', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are', 'me': 'them', 'mine': 'their', 'we': 'they' }
+    dic_M = {'Id': 'hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'You' :'He', 'you': 'him', 'you': 'him', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'he\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he', 'us': 'him ', 'are': 'is', 'youre': 'hes', 'Ive': 'he has', 'youve':'he has', 'We': 'He', 'weve': 'he has'}
+    dic_F = {'Id': 'shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'You' :'She', 'you': 'her', 'Im': 'shes ', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her ', 'are': 'is ', 'youre': 'shes', 'Ive': 'she has', 'Ive': 'she has', 'youve':'she has', 'We': 'She', 'weve': 'she has'}
+    dic_T = {'Id': 'theyd', 'I ': 'They', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are ', 'me': ' them ', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them ', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are' }
 
 
     count = 0
