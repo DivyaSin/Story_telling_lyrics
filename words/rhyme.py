@@ -15,6 +15,7 @@ import pprint
 from nltk.tokenize import word_tokenize
 from fuzzywuzzy import fuzz
 import markov_lyrics
+import unicodedata
 # from nltk.tag import pos_tag
 # from fnmatch import fnmatch
 # from difflib import SequenceMatcher
@@ -131,6 +132,7 @@ def getMarkovBatch():
 # mega_sentences = ( wordlists.sents('taylor_lyrics.txt') ) 
 
     mega_sentences = (wordlists.sents('lyrics_batch.txt'))
+    # print mega_sentences
 
 # mega_sentences = ( nltk.corpus.brown.sents() + 
 #                 nltk.corpus.inaugural.sents() + 
@@ -412,7 +414,6 @@ def get_corpus_score(close_sentences):
     closest_sentences = []
     print close_sentences
     for line in close_sentences:
-        # print line
         unirest.timeout(10)
         try:
             response = unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=%s" % line,
@@ -495,7 +496,9 @@ def get_rhyme(sentence):
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
     close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-2 <= n <= close_number+2] 
-    closest_sentences = get_corpus_score(close_sentences)
+    close_sentences_set = set(close_sentences)
+    close_sentences_list = list(close_sentences_set)
+    closest_sentences = get_corpus_score(close_sentences_list)
     # sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
     # story_score = get_story_score(sentiment_dictionary)
     # pprint.pprint(tension_dictionary)
@@ -516,26 +519,29 @@ def get_rhyme(sentence):
     else:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
     print "rhyme_sentences"
-    print rhyme_sentences 
+    # print rhyme_sentences 
     if not rhyme_sentences:
-        rhyme_sentences = close_sentences
+        rhyme_sentences = close_sentences_list
     return random.choice(rhyme_sentences) # need to fix this
 
 def connect_sentences(line, rhyme_line):
     sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She', 'Virgin\'s', 'Princess']
 
     story_line, replaceable_line = line, rhyme_line
+
     def replace_all(text, dic):
+        flag = True
         list_of_words = text.split()
         for i, j in dic.iteritems():
             for k, word in enumerate(list_of_words):
                 if word == i:
-                    list_of_words[k] = word.replace(word, j)
+                    list_of_words[k] = word.replace(word, j)        
+        
         return ' '.join(list_of_words)
 
-    dic_M = {'Id': 'hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'You' :'He', 'you': 'him', 'you': 'him', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'he\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he', 'us': 'him ', 'are': 'is', 'youre': 'hes', 'Ive': 'he has', 'youve':'he has', 'We': 'He', 'weve': 'he has'}
-    dic_F = {'Id': 'shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'You' :'She', 'you': 'her', 'Im': 'shes ', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her ', 'are': 'is ', 'youre': 'shes', 'Ive': 'she has', 'Ive': 'she has', 'youve':'she has', 'We': 'She', 'weve': 'she has'}
-    dic_T = {'Id': 'theyd', 'I ': 'They', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are ', 'me': ' them ', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them ', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are' }
+    dic_M = {'Id': 'hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'you' :'he', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'he\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he', 'us': 'him ', 'are': 'is', 'youre': 'hes', 'Ive': 'he has', 'youve':'he has', 'We': 'He', 'weve': 'he has', 'have': 'has'}
+    dic_F = {'Id': 'shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'you' :'she', 'Im': 'shes ', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her ', 'are': 'is ', 'youre': 'shes', 'Ive': 'she has', 'Ive': 'she has', 'youve':'she has', 'We': 'She', 'weve': 'she has', 'have':'has'}
+    dic_T = {'Id': 'theyd', 'I': 'They', 'you': 'they', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are ', 'me': ' them ', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them ', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are', 'has': 'have'}
 
 
     count = 0

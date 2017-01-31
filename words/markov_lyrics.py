@@ -16,7 +16,7 @@ def markov():
 	reversed_lyrics = markovify.NewlineText(text)
 	text_file = open('corpus/lyrics_batch.txt', 'w')  
 	for i in range(100):
-    		text_file.write((reversed_lyrics.make_short_sentence(70)).translate(None, string.punctuation)+'.')
+    		text_file.write((reversed_lyrics.make_short_sentence(60)).translate(None, string.punctuation)+'.')
     		text_file.write("\n")
 	text_file.close()
 
