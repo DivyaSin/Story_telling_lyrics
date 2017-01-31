@@ -536,12 +536,12 @@ def connect_sentences(line, rhyme_line):
             for k, word in enumerate(list_of_words):
                 if word == i:
                     list_of_words[k] = word.replace(word, j)        
-        
+
         return ' '.join(list_of_words)
 
-    dic_M = {'Id': 'hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'you' :'he', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'he\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'he', 'us': 'him ', 'are': 'is', 'youre': 'hes', 'Ive': 'he has', 'youve':'he has', 'We': 'He', 'weve': 'he has', 'have': 'has'}
-    dic_F = {'Id': 'shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'you' :'she', 'Im': 'shes ', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her ', 'are': 'is ', 'youre': 'shes', 'Ive': 'she has', 'Ive': 'she has', 'youve':'she has', 'We': 'She', 'weve': 'she has', 'have':'has'}
-    dic_T = {'Id': 'theyd', 'I': 'They', 'you': 'they', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are ', 'me': ' them ', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them ', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are', 'has': 'have'}
+    dic_M = {'Id': 'Hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'you' :'He', 'Im': 'Hes', 'theyre': 'Hes', 'my': 'his', 'Ill': 'He\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'He', 'us': 'him ', 'are': 'is', 'youre': 'Hes', 'Ive': 'He has', 'youve':'He has', 'We': 'He', 'weve': 'He has', 'have': 'has'}
+    dic_F = {'Id': 'Shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'you' :'She', 'Im': 'Shes ', 'theyre': 'Shes', 'my': 'her', 'Ill': 'She\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'She', 'us': 'her ', 'are': 'is ', 'youre': 'Shes', 'Ive': 'She has', 'Ive':'She has', 'youve':'She has', 'We': 'She', 'weve': 'She has', 'have':'has'}
+    dic_T = {'Id': 'Theyd', 'I': 'They', 'you': 'They', 'your': 'their', 'he': 'They', 'He': 'They ', 'She': 'They', 'she': 'They', 'shes':'Theyre', 'hes': 'Theyre', 'Im': 'Theyre', 'my': 'their', 'Ill': 'Theyll', 'am': 'are ', 'me': 'them', 'mine': 'their', 'we': 'They', 'We': 'They', 'us': 'them ', 'youre': 'They are', 'doesnt': 'dont', 'Ive': 'They\'ve', 'youve' : 'They have', 'weve': 'Theyve', 'is' : 'are', 'has': 'have'}
 
 
     count = 0
@@ -617,5 +617,5 @@ def generate_lyrics(story):
             pass
     print "################"
 
-story = "Eagle Knight and Virgin were in love. Eagle Knight admired Princess. He felt a strong affection for her. Virgin was an ambitious person. She wanted power and money in an easy way. Virgin kidnapped Princess and went to Chapultepec forest. Virgin's plan was to ask for an important amount of feathers to liberate Princess. Eagle Knight was emotionally tied to Virgin. But Eagle Knight could not accept his behavior. What could Eagle Knight do? Princess was able to unleash herself. Princess felt panic and ran away to hide in the Popocateptl mountain."
+story = "Princess did not want to admit it at the beginning. She fell in love with Eagle Knight. Eagle Knight felt a strong attraction for Lady. Lady was in love with Eagle Knight. Princess realized that Eagle Knight was interested in Lady. So she got really jealous of her. Princess hit furiously Lady with her fists. In a fast movement, Princess wounded Lady. An intense hemorrhage aroused which weakened her. Eagle Knight knew that Lady could die. And that Eagle Knight had to do something about it. Eagle Knight made a potion that Lady drank. She started to recuperate. She got anxiously assaulted. Princess felt panic and ran away to hide in the Popocateptl mountain."
 generate_lyrics(story)
