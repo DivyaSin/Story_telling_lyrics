@@ -25,7 +25,7 @@ pronunciationDictionary = nltk.corpus.cmudict.dict()
 
 tension_dictionary = {}
 tension_list = []
-with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/tension.txt') as tension_file:
+with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/ce_eg5.txt') as tension_file:
     flag = True
     same_value = True
     val = []
@@ -284,13 +284,14 @@ def word_rhyme_candidates(word):
     print word
     word = word.lower()
     candidates = []
+    pronunciations = []
     try:
         pronunciations = pronunciationDictionary[word]
     except KeyError:
         pass
     if pronunciations == []:
         print "No pronunciations"
-        return []
+        pronunciations = word[-1]
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
             # print pronunciation, rhyme_pronunciation
@@ -393,6 +394,8 @@ def get_sentiment_value(pattern, tension_dictionary):
         return 0
     else:
         for list in sentiment_list:
+            print list
+            print list
             if list:
                 for symbol in list:
                     if symbol[0] == '-':
@@ -403,6 +406,7 @@ def get_sentiment_value(pattern, tension_dictionary):
                         lc_found = True
                     if symbol == 'ce2':
                         ce_found = True
+
     if lc_found:
         return -1 * (score)
     elif ce_found:
@@ -472,7 +476,7 @@ def get_rhyme(sentence):
     # print "rhymes"
     # print rhymes
     for rhyme in rhymes:
-        candidate_sentence += candidate_sentences( last_word(tokens) )
+        candidate_sentence += candidate_sentences(rhyme)
     # print sentence
     # print candidate_sentence
 
@@ -495,7 +499,7 @@ def get_rhyme(sentence):
             return "Oho ho ho ho ho"
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
-    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-2 <= n <= close_number+2] 
+    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1<=n <= close_number+1] 
     close_sentences_set = set(close_sentences)
     close_sentences_list = list(close_sentences_set)
     closest_sentences = get_corpus_score(close_sentences_list)
@@ -525,7 +529,7 @@ def get_rhyme(sentence):
     return random.choice(rhyme_sentences) # need to fix this
 
 def connect_sentences(line, rhyme_line):
-    sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She', 'Virgin\'s', 'Princess']
+    sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She', 'Virgin\'s', 'Lady', 'he', 'she', 'her', 'his', 'priest', 'princess', 'lady', 'him']
 
     story_line, replaceable_line = line, rhyme_line
 
@@ -539,27 +543,26 @@ def connect_sentences(line, rhyme_line):
 
         return ' '.join(list_of_words)
 
-    dic_M = {'Id': 'Hed', 'I': 'He', 'your': 'his', 'Shes': 'Hes','Shes': 'Hes', 'you' :'He', 'Im': 'Hes', 'theyre': 'Hes', 'my': 'his', 'Ill': 'He\'ll', 'am': 'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'He', 'us': 'him ', 'are': 'is', 'youre': 'Hes', 'Ive': 'He has', 'youve':'He has', 'We': 'He', 'weve': 'He has', 'have': 'has'}
-    dic_F = {'Id': 'Shed', 'I': 'She', 'your': 'her', 'Hes': 'Shes', 'Hes ': 'Shes', 'you' :'She', 'Im': 'Shes ', 'theyre': 'Shes', 'my': 'her', 'Ill': 'She\'ll', 'am ' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'She', 'us': 'her ', 'are': 'is ', 'youre': 'Shes', 'Ive': 'She has', 'Ive':'She has', 'youve':'She has', 'We': 'She', 'weve': 'She has', 'have':'has'}
-    dic_T = {'Id': 'Theyd', 'I': 'They', 'you': 'They', 'your': 'their', 'he': 'They', 'He': 'They ', 'She': 'They', 'she': 'They', 'shes':'Theyre', 'hes': 'Theyre', 'Im': 'Theyre', 'my': 'their', 'Ill': 'Theyll', 'am': 'are ', 'me': 'them', 'mine': 'their', 'we': 'They', 'We': 'They', 'us': 'them ', 'youre': 'They are', 'doesnt': 'dont', 'Ive': 'They\'ve', 'youve' : 'They have', 'weve': 'Theyve', 'is' : 'are', 'has': 'have'}
+    dic_M = {'Id': 'hed', 'I': 'he', 'your': 'his', 'Shes': 'hes', 'Shes': 'hes', 'you' :'he', 'Im': 'hes', 'theyre': 'hes', 'my': 'his', 'Ill': 'he\'ll', 'am':'is', 'dont': 'doesnt', 'yours': 'his', 'me': 'him', 'mine': 'his', 'we': 'He', 'us': 'him', 'are': 'is', 'youre': 'hes', 'Ive': 'He has', 'Youve':'he has', 'We': 'he', 'weve': 'he has', 'have': 'has'}
+    dic_F = {'Id': 'shed', 'I': 'she', 'your': 'her', 'Hes': 'shes', 'Hes': 'shes', 'you' :'she', 'Im': 'shes', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her', 'are': 'is', 'youre': 'shes', 'Ive': 'she has', 'Ive':'she has', 'Youve':'she has', 'We': 'she', 'weve': 'she has', 'have':'has'}
+    dic_T = {'Id': 'theyd', 'I': 'they', 'you': 'they', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are', 'me': 'them', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are', 'has': 'have', 'was': 'were'}
 
 
     count = 0
     for word in story_line.split(): 
         if word in sub_list:
             count +=1
-            if count == 1:
-                subject = word
-                # print subject
-                if subject in ['Prince', 'Eagle', 'He', 'his', 'him']:
-                    replaceable_word = 'he'
-                else:
-                    replaceable_word = 'she'
-            if count > 1:
-                replaceable_word = 'they'
-                subject = 'them'
 
-    # print replaceable_word
+    if count == 1:
+        for word in story_line.split(): 
+                # print subject
+            if word in ['Prince', 'Eagle', 'He', 'his', 'him', 'priest']:
+                replaceable_word = 'he'
+            else:
+                replaceable_word = 'she'
+    if count > 1:
+        replaceable_word = 'they'
+        subject = 'them'
 
     if replaceable_word == 'he':
         text = replace_all(replaceable_line, dic_M)
@@ -610,6 +613,7 @@ def generate_lyrics(story):
     for i, v in enumerate(rhyme_lines):
         lines.insert(2*i+1, v)
     for i,j in enumerate(lines):
+        j = j.replace(j.split()[0], j.split()[0].title())
         print j.strip("\n")
         if (i in [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75, 79, 83, 87]):
             print ''
@@ -617,5 +621,5 @@ def generate_lyrics(story):
             pass
     print "################"
 
-story = "Princess did not want to admit it at the beginning. She fell in love with Eagle Knight. Eagle Knight felt a strong attraction for Lady. Lady was in love with Eagle Knight. Princess realized that Eagle Knight was interested in Lady. So she got really jealous of her. Princess hit furiously Lady with her fists. In a fast movement, Princess wounded Lady. An intense hemorrhage aroused which weakened her. Eagle Knight knew that Lady could die. And that Eagle Knight had to do something about it. Eagle Knight made a potion that Lady drank. She started to recuperate. She got anxiously assaulted. Princess felt panic and ran away to hide in the Popocateptl mountain."
+story = "The lady wanted him from the start. The lady hid her love for the priest. But she fell in love with him. The princess was in love with the priest."
 generate_lyrics(story)
