@@ -16,15 +16,13 @@ from nltk.tokenize import word_tokenize
 from fuzzywuzzy import fuzz
 import markov_lyrics
 import unicodedata
-# from nltk.tag import pos_tag
-# from fnmatch import fnmatch
-# from difflib import SequenceMatcher
 
 rhyme_entries = nltk.corpus.cmudict.entries()
 pronunciationDictionary = nltk.corpus.cmudict.dict() 
 
 tension_dictionary = {}
 tension_list = []
+
 with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/ce_eg5.txt') as tension_file:
     flag = True
     same_value = True
@@ -48,9 +46,7 @@ with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/ce_eg5.tx
                     tension_dictionary[key].append(val)
                 else:
                     tension_dictionary[key] = [val]
-# pprint.pprint(tension_dictionary)
 
-# dictionary of actions
 action_keys = ['ACT', 'PRE', 'POS', 'TEN', 'TEXT']
 action_dictionary = {}
 actions_list = []
@@ -62,7 +58,6 @@ with open("actions.txt") as actions_file:
         action_dictionary[new_key] = []
     else:
       if not line.strip():
-        # pprint.pprint(action_dictionary)
         l = action_dictionary["TEXT"]
         l = [val for sublist in l for val in sublist]
         action_dictionary["TEXT"] = l
@@ -74,13 +69,9 @@ with open("actions.txt") as actions_file:
           val = line.strip().split(" ")
         else:
           val = line.strip().split(". ")
-          # if new_key == "TEXT":
-          #   val.pop()
         if new_key == "TEXT":
           if action_dictionary[new_key]:
             action_dictionary[new_key].append(val)
-            # for string in action_dictionary[new_key]:
-            #   val.append(string)
           else:
             val = [val]
             action_dictionary[new_key] = val
@@ -90,23 +81,10 @@ with open("actions.txt") as actions_file:
             for array in action_dictionary[new_key]:
               val_array.append(array)
           val_array.reverse()
-          # val_array = [val for sublist in val_array for val in sublist]
           action_dictionary[new_key] = val_array
           action_dictionary.update(action_dictionary)
     if line == "END":
       break
-# pprint.pprint(actions_list)
-# flag = "False"
-# output = ""
-# if flag != "True":
-#     file_name = "corpus/lyrics_batch.txt"
-# # string_to_add = "."
-#     with open(file_name, 'r') as f:
-#         file_lines = [''.join([x.strip(), string_to_add, '\n']) for x in f.readlines() ]
-
-#     with open(file_name, 'w') as f:
-#         f.writelines(file_lines) 
-#     false = "True"
 
 def last_word(sentence):
     ss = [ word for word in sentence if len(word) > 1 ]
@@ -120,109 +98,43 @@ def getMarkovBatch():
     markov_lyrics.markov()
     corpus_root = '/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus'
     wordlists = PlaintextCorpusReader(corpus_root, '.*')
-
-# print wordlists.fileids()
-
-# print wordlists.sents('lyrics1.txt')
-
-# print wordlists.sents('lyrics.txt')
-
-# li = [i.strip().split() for i in open("lyrics1.txt").readlines()]
-
-# mega_sentences = ( wordlists.sents('taylor_lyrics.txt') ) 
-
     mega_sentences = (wordlists.sents('lyrics_batch.txt'))
-    # print mega_sentences
-
-# mega_sentences = ( nltk.corpus.brown.sents() + 
-#                 nltk.corpus.inaugural.sents() + 
-#                 nltk.corpus.reuters.sents() + 
-#                 nltk.corpus.webtext.sents() + 
-#                 nltk.corpus.inaugural.sents() + 
-#                 nltk.corpus.gutenberg.sents("carroll-alice.txt") +
-#                 nltk.corpus.gutenberg.sents("austen-emma.txt") + 
-#                 nltk.corpus.gutenberg.sents("austen-sense.txt") + 
-#                 nltk.corpus.gutenberg.sents("blake-poems.txt") + 
-#                 nltk.corpus.gutenberg.sents("bible-kjv.txt") + 
-#                 nltk.corpus.gutenberg.sents("chesterton-ball.txt") + 
-#                 nltk.corpus.gutenberg.sents("melville-moby_dick.txt") + 
-#                 nltk.corpus.gutenberg.sents("milton-paradise.txt") + 
-#                 nltk.corpus.gutenberg.sents("whitman-leaves.txt") + 
-#                 nltk.corpus.gutenberg.sents("austen-persuasion.txt") + 
-#                 nltk.corpus.gutenberg.sents("shakespeare-hamlet.txt") + 
-#                 nltk.corpus.gutenberg.sents("shakespeare-macbeth.txt") ) 
-
-    
-    # if os.path.exists("sentences.gz"):
-    #     with gzip.open("sentences.gz", "r") as cache_file:
-    #         last_word_sentences = cPickle.load( cache_file )
-    # else:
-    for sentence in mega_sentences:
-        lw = last_word(sentence)
-        last_word_sentences[ lw ].append(sentence)
-    # pprint.pprint(last_word_sentences)
-    keys = last_word_sentences.keys()
-    # print "\n"
-    # print keys
-    # with gzip.open("sentences.gz", "w") as cache_file:
-    #     cPickle.dump(last_word_sentences, cache_file)
+    if mega_sentences:
+        for sentence in mega_sentences:
+            lw = last_word(sentence)
+            last_word_sentences[ lw ].append(sentence)
+        keys = last_word_sentences.keys()
+    else:
+        getMarkovBatch()
     return keys, last_word_sentences
 
 def candidate_sentences(word):
-    # print word
-    # print "candidate_sentences"
     candidates = []
     word_pronunciation = pronunciationDictionary[word.lower()]
     word_pro = word_pronunciation[0]
-    # print word_pro
-    # print 
-    # print "Markov chain again called"
     keys, last_word_sentences = getMarkovBatch()
-    # print last_word_sentences
     for key in keys:
         try:
             key_pronunciation = pronunciationDictionary[key]
             key_pro = key_pronunciation[0]
-            # print key_pro
-            # print key_pronunciation
         except KeyError:
-            # print "KeyError"
-            # if key[-1].isdigit():
-            #     continue
-            # key_pro = pronunciationDictionary[key[-1].lower()]
             continue
         rhyme_quality = quality_of_rhyme(word_pro, key_pro)
-        # print word_pronunciation, key_pronunciation
-        # print rhyme_quality
         candidates.append( (rhyme_quality, key) )
-    # print candidates
     candidates.sort()
     candidates.reverse()
     words = [ key for rhyme_quality, key in candidates if rhyme_quality >= 1 ]
-    # print "words"
-    # print words
-    
-    # print "last_word_sentences"
-    # print last_word_sentences
     if words:
         good_word = random.choice(words)
-        # print last_word_sentences[good_word.lower()]
         return last_word_sentences[good_word.lower()]  
     else:
-        # candidate_sentences(word)
         return ''
 
 def quality_of_rhyme(p1, p2):
     p1 = copy.deepcopy(p1)
-    # print p1
     p2 = copy.deepcopy(p2)
-    # print p2
     p1.reverse()
-    # print "p1 reverse"
-    # print p1
     p2.reverse()
-    # print "p2 reverse"
-    # print p2
     if p1 == p2:
         return 0
     quality = 0
@@ -233,13 +145,6 @@ def quality_of_rhyme(p1, p2):
                 quality += 2
     except IndexError:
         pass
-    # for i, p in enumerate(p1):    
-    #     try:
-    #         if p == p2[i+1]:
-    #             quality += 1
-    #     except IndexError:
-    #         break
-    # print quality
     return quality
     
 def find_high_priority(candidates, word):
@@ -249,9 +154,6 @@ def find_high_priority(candidates, word):
     for candidate in candidates:
         p1 = list(copy.deepcopy(candidate))
         p1.reverse()
-        # print "Words are:"
-        # print p1
-        # print p2
         if p1 == p2:
             return 0
         quality = 0
@@ -259,15 +161,12 @@ def find_high_priority(candidates, word):
         for i, p in enumerate(p1):
             try:
                 if p == p2[i]:
-                    # print p
-                    # print p2[i]
                     quality += 1
                     if p not in ('a', 'e', 'i', 'o', 'u'):
                         quality -= 1
                     if p in ('a', 'e', 'i', 'o', 'u') and (not sameVowelFound):
                         quality += 1
                         sameVowelFound = True
-                    # print quality
                 else:
                     break  
             except IndexError:
@@ -277,7 +176,6 @@ def find_high_priority(candidates, word):
     new_candidates.sort()
     new_candidates.reverse()
     new_candidates = [ candidate for quality, candidate in new_candidates ]
-    # print candidates
     return new_candidates
 
 def word_rhyme_candidates(word):
@@ -294,34 +192,19 @@ def word_rhyme_candidates(word):
         pronunciations = word[-1]
     for pronunciation in pronunciations:
         for rhyme_word, rhyme_pronunciation in rhyme_entries:
-            # print pronunciation, rhyme_pronunciation
             if rhyme_word[-1].isdigit():
                 continue
             quality = quality_of_rhyme(pronunciation, rhyme_pronunciation)
             if quality > 0:
                 candidates.append( (quality, rhyme_word) )
-    # print
-    # print candidates
     candidates.sort()
     candidates.reverse()
-    # print
-    # print candidates
-    # best_quality = candidates[0][0]
-    # worst_quality = best_quality -1
     candidates = [ candidate for q, candidate in candidates ]
-    # candidates = [ candidate for q, candidate in candidates ]
     top_candidates = candidates[:50]
-    # candidates_random = random.choice(candidates, 50)
-    # print candidates_random
-    # print top_candidates
     high_priority_candidates = find_high_priority(candidates, word)
     if not high_priority_candidates:
-        # print "Candidates taken"
-        # print candidates
         return candidates
     else:
-        # print "New_candidates taken"
-        # print new_candidates
         return high_priority_candidates
 
 def get_pre_score(sentiment_dictionary):
@@ -348,7 +231,6 @@ def get_pos_score(sentiment_dictionary):
 
 def get_story_score(sentiment_dictionary):
     if not sentiment_dictionary.get('POS'):
-        # print 'No pos'
         if not sentiment_dictionary.get('PRE'):
             story_score = 0
             return story_score
@@ -356,7 +238,6 @@ def get_story_score(sentiment_dictionary):
             story_score = get_pre_score(sentiment_dictionary)
             return story_score
     else:
-        # print "pos"
         story_score = get_pos_score(sentiment_dictionary)
         if story_score == 0:
             story_score = get_pre_score(sentiment_dictionary)
@@ -367,12 +248,7 @@ def get_sentiment_dictionary(pattern, actions_list):
     sentiment_dictionary = []
     for dictionary in actions_list:
         for string in dictionary["TEXT"]:
-            # print pattern
-            # print string
-            # m = SequenceMatcher(None, pattern, string)
             similarity_score = fuzz.partial_ratio(pattern, string)
-            # print similarity_score
-            # print "###########"
             if similarity_score > max_similarity_score:
                 max_similarity_score = similarity_score
                 sentiment_dictionary = dictionary
@@ -386,7 +262,6 @@ def get_sentiment_value(pattern, tension_dictionary):
     ce_found = False
     for key, list in tension_dictionary.items():
         similarity_score = fuzz.partial_ratio(pattern, key)
-        # print key, list, similarity_score
         if similarity_score >= max_similarity_score:
                 max_similarity_score = similarity_score
                 sentiment_list = list
@@ -406,7 +281,6 @@ def get_sentiment_value(pattern, tension_dictionary):
                         lc_found = True
                     if symbol == 'ce2':
                         ce_found = True
-
     if lc_found:
         return -1 * (score)
     elif ce_found:
@@ -432,16 +306,7 @@ def get_corpus_score(close_sentences):
         if response.code != 200:
             continue
         t = response.body
-        # print line
-        # print t
-        # keywords = t['keywords']
         score = t['score']
-        # for keyword in keywords:
-        #     score = score + keyword['score']
-        # if len(keywords) != 0:
-        #     score = score / len(keywords)
-        # else:
-        #     score = 0
         if 0.05 < score < 0.5:
             score = 1
         elif 0.5 < score < 2.0:
@@ -457,37 +322,20 @@ def get_corpus_score(close_sentences):
         else:
             score = -3
         closest_sentences.append((score, line))
-    # print closest_sentences 
     return closest_sentences
 
 def get_rhyme(sentence):
     pattern = sentence
-    # post_tag_list = nltk.pos_tag(sentence.split())
     target_syllables = syllables.sentence_syllables(sentence)
     tokens = nltk.word_tokenize(sentence)
     rhymes = word_rhyme_candidates(last_word(tokens))
-    # for syn in wordnet.sysnsets(last_word(tokens)):
-    #     for l in syn.lemmas():
-    #         synonyms.append(l.name())
-    # print(set(synonyms))
     candidate_sentence = []
-    # if len(tokens) == 1:
-    #     return ", ".join(rhymes[:12])
-    # print "rhymes"
-    # print rhymes
     for rhyme in rhymes:
         candidate_sentence += candidate_sentences(rhyme)
-    # print sentence
-    # print candidate_sentence
-
-    # if candidate_sentence == []:
-    #     generate_lyrics(sentence)
-
     syllable_sentences = []
     for sentence in candidate_sentence:
         sumOfSyllables = sum( [ syllables.syllables(word) for word in sentence ] )
         syllable_sentences.append( (sumOfSyllables, " ".join(sentence)) )
-    # print syllable_sentences
     syllable_sentences.sort()
     syllable_sentences.reverse()
     if len( syllable_sentences ) == 0:
@@ -499,38 +347,26 @@ def get_rhyme(sentence):
             return "Oho ho ho ho ho"
     syllable_numbers = [ n for n, sentence in syllable_sentences ] 
     close_number = min( syllable_numbers, key=lambda x:abs(x-target_syllables) )
-    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1<=n <= close_number+1] 
+    close_sentences = [ sentence for n, sentence in syllable_sentences if close_number-1 <= n <= close_number] 
     close_sentences_set = set(close_sentences)
     close_sentences_list = list(close_sentences_set)
     closest_sentences = get_corpus_score(close_sentences_list)
-    # sentiment_dictionary = get_sentiment_dictionary(pattern, actions_list)
-    # story_score = get_story_score(sentiment_dictionary)
-    # pprint.pprint(tension_dictionary)
     story_score = get_sentiment_value(pattern, tension_dictionary)
-    # print "sentiment value"
-    # print story_score
-
     rhyme_sentences = []
-    # mapping of sentiments 
     if story_score > 0:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
         rhyme_sentences.sort()
-        # pprint.pprint(rhyme_sentences)
     elif story_score < 0:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == story_score] 
         rhyme_sentences.sort()
-        # pprint.pprint(rhyme_sentences)
     else:
         rhyme_sentences = [ sentence for score, sentence in closest_sentences if score == 0] 
-    print "rhyme_sentences"
-    # print rhyme_sentences 
     if not rhyme_sentences:
         rhyme_sentences = close_sentences_list
     return random.choice(rhyme_sentences) # need to fix this
 
 def connect_sentences(line, rhyme_line):
     sub_list = ['Virgin', 'Eagle', 'Princess', 'Prince', 'He', 'She', 'Virgin\'s', 'Lady', 'he', 'she', 'her', 'his', 'priest', 'princess', 'lady', 'him']
-
     story_line, replaceable_line = line, rhyme_line
 
     def replace_all(text, dic):
@@ -547,7 +383,6 @@ def connect_sentences(line, rhyme_line):
     dic_F = {'Id': 'shed', 'I': 'she', 'your': 'her', 'Hes': 'shes', 'Hes': 'shes', 'you' :'she', 'Im': 'shes', 'theyre': 'shes', 'my': 'her', 'Ill': 'she\'ll', 'am' :'is', 'dont': 'doesnt', 'yours': 'hers', 'me': 'her', 'mine': 'her', 'we': 'she', 'us': 'her', 'are': 'is', 'youre': 'shes', 'Ive': 'she has', 'Ive':'she has', 'Youve':'she has', 'We': 'she', 'weve': 'she has', 'have':'has'}
     dic_T = {'Id': 'theyd', 'I': 'they', 'you': 'they', 'your': 'their', 'he': 'they', 'He': 'they ', 'She': 'they', 'she': 'they', 'shes':'theyre', 'hes': 'theyre', 'Im': 'theyre', 'my': 'their', 'Ill': 'theyll', 'am': 'are', 'me': 'them', 'mine': 'their', 'we': 'they', 'We': 'They', 'us': 'them', 'youre': 'they are', 'doesnt': 'dont', 'Ive': 'they\'ve', 'youve' : 'they have', 'weve': 'theyve', 'is' : 'are', 'has': 'have', 'was': 'were'}
 
-
     count = 0
     for word in story_line.split(): 
         if word in sub_list:
@@ -556,7 +391,7 @@ def connect_sentences(line, rhyme_line):
     if count == 1:
         for word in story_line.split(): 
                 # print subject
-            if word in ['Prince', 'Eagle', 'He', 'his', 'him', 'priest']:
+            if word in ['Prince', 'Eagle', 'He', 'his', 'him', 'priest', ' He']:
                 replaceable_word = 'he'
             else:
                 replaceable_word = 'she'
@@ -574,8 +409,6 @@ def connect_sentences(line, rhyme_line):
     return text
 
 def generate_lyrics(story):
-    # pat = ('\. +(?=[A-Z ])')
-    # text = re.sub(pat, '\n', string)
     for c in string.punctuation:
         if c == "\'":
             continue
@@ -621,5 +454,5 @@ def generate_lyrics(story):
             pass
     print "################"
 
-story = "The lady wanted him from the start. The lady hid her love for the priest. But she fell in love with him. The princess was in love with the priest."
+story = "The priest was ambitious."
 generate_lyrics(story)
