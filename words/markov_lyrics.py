@@ -5,12 +5,15 @@ import pprint
 from sylco import sylco
 
 def markov():
-
-	with open('/Users/divyasingh/Desktop/Story_telling_lyrics/words/corpus/love_lyrics.txt') as f:
+	with open('/Users/divyasingh/Documents/MABLE/rape_corpus.txt') as f:
 		text = f.read()
 	reversed_lyrics = markovify.NewlineText(text)
 	text_file = open('corpus/lyrics_batch.txt', 'w')  
-	for i in range(100):
-    		text_file.write((reversed_lyrics.make_short_sentence(60)).translate(None, string.punctuation)+'.')
+	for i in range(30):
+		print i
+		sentence = reversed_lyrics.make_short_sentence(60)
+		print sentence
+		if sentence:
+			text_file.write(sentence.translate(None, string.punctuation)+'.')
     		text_file.write("\n")
 	text_file.close()
