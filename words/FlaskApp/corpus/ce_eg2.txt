@@ -1,0 +1,30 @@
+Virgin loved Eagle Knight
+     Virgin(+3,1):Eagle Knight
+ 
+Virgin had_an_accident
+     hr(Virgin)
+ 
+Eagle Knight attempted_to_steal Virgin
+     Virgin(-2,5):Eagle_Knight
+     ce2(Virgin):Eagle Knight
+ 
+Virgin clash_emotion_1 Eagle Knight
+ 
+Virgin insulted Eagle Knight
+     Eagle Knight(-2,1):Virgin
+     Virgin(-2,1):Virgin
+ 
+Eagle Knight did_not_cure Virgin
+     Virgin(-3,5):Eagle Knight
+     pd(Eagle Knight):Virgin+
+ 
+Virgin cured Virgin
+     Virgin(+2,1):Virgin
+     Virgin(+3,5):Virgin
+     ce2(Virgin):Virgin
+ 
+Virgin clash_emotion_3
+ 
+Eagle Knight went_texcoco_lake
+ 
+Virgin the_end

@@ -1,0 +1,23 @@
+priest actor
+
+lady actor
+
+lady was_fond_of priest
+
+lady fell_in_love priest
+
+princess was_in_love_with priest
+
+princess loved lady
+
+priest kidnapped lady
+
+lady clash_emotion_1 priest
+
+princess clash_emotion_2 priest
+
+lady became_free
+
+lady ran_away
+
+priest the_end

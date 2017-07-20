@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Automated Lyrical Narrative Writing</title>
+    <!-- <link href="../static/css/signup.css" rel="stylesheet"> -->
+  <script src="../static/js/jquery-1.11.2.js"></script>
+  <script src="../static/js/signUp.js"></script>
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" ><a href="/">Home</a></li>
+          <li role="presentation" class="active"><a href="showSignUp">Try</a></li>
+        </ul>
+      </nav>
+      <a><img src="https://image.ibb.co/jN3XLF/mable_Logo.png" alt="mable_Logo" border="0" style="width:100px;height:100px;"></a>
+      <!-- <h4 class="text-muted">MABLE</h4> -->
+    </div>
+
+ <!--    <div class="jumbotron">
+      <h4> Please enter a phrase in the box given below. I will generate a lyrical line. Select the one you like and if you don't like any of the options, you can re-generate. :) </h4>
+    </div> -->
+    <center>
+    <form class="form-inline" id = "generateForm">
+
+      <div class="form-group">
+        <label for="inputName" class="sr-only">Story line</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder = "first sentence of lyrics..." style="width: 300px; text-align: center" required autofocus="true"> 
+      </div>
+
+      <button id="btnSignUp" class = "btn btn-primary" style=" padding: 8px 15px;font-size: 14px" type="button">Generate</button>
+      
+      <select name="states" id="states" style=" background-color: #3BB415; color: white; padding: 8px 15px; font-size: 14px; width: 300px">
+        <option>Select One</option>
+      </select>
+
+      <div class="form-group">
+        <label for="inputName" class="sr-only">Figurative line</label>
+        <input type="name" name="figurativeLine" id="figurativeLine" class="form-control" style = "width: 300px; display: none" required autofocus="true"> 
+      </div>
+
+    </form>
+    </center>
+    <footer class="footer navbar-fixed-bottom">
+      <p> &copy; 2017</p>
+    </footer>
+
+  </div>
+</body>
+</html>

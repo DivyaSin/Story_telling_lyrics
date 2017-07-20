@@ -1,0 +1,51 @@
+Eagle Knight were_in_love Virgin
+     Eagle Knight(+3,2):Virgin
+     Virgin(+3,2):Eagle Knight
+ 
+Virgin was_attracted_to Jaguar Knight
+     Virgin(+2,2):Jaguar Knight
+ 
+Eagle Knight got_jealous_of_b_because_c_attention Jaguar Knight Virgin
+     Eagle Knight(-2,2):Jaguar Knight
+ 
+Eagle Knight attacked Jaguar Knight
+     Virgin(-2,4):Eagle Knight
+     Jaguar Knight(-3,4):Eagle Knight
+     lr(Jaguar Knight):Eagle Knight+
+     ce2(Virgin):Eagle Knight
+     pd(Eagle Knight):Jaguar Knight+
+ 
+Virgin clash_emotion_1 Eagle Knight
+ 
+Jaguar Knight fought Eagle Knight
+     Eagle Knight(-3,4):Jaguar Knight
+     lr(Eagle Knight):Jaguar Knight+
+     pd(Jaguar Knight):Eagle Knight+
+ 
+Jaguar Knight killed Eagle Knight
+     ad(Eagle Knight):Jaguar Knight
+ 
+Virgin clash_emotion_2 Jaguar Knight
+ 
+Virgin attacked Jaguar Knight
+     Jaguar Knight(-3,4):Virgin
+     Virgin(-2,4):Virgin
+     lr(Jaguar Knight):Virgin+
+     pd(Virgin):Jaguar Knight+
+ 
+Jaguar Knight wounded Virgin
+     Virgin(-3,4):Jaguar Knight
+     hr(Virgin):Jaguar Knight
+     ce2(Virgin):Jaguar Knight
+     pd(Jaguar Knight):Virgin+
+ 
+Virgin cured Virgin
+     Virgin(+2,1):Virgin
+     Virgin(+3,5):Virgin
+     ce2(Virgin):Virgin
+ 
+Virgin clash_emotion_3
+ 
+Jaguar Knight ran_away
+ 
+Eagle Knight the_end
