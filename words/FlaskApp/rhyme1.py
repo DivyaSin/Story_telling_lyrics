@@ -458,9 +458,12 @@ def generate_lyrics(story):
     #         line_no += 1
 
     rhyme_line_list = get_rhyme(story)
-    for line in rhyme_line_list:
+
+    rhyme_line_list = [line.replace(".","") for line in rhyme_line_list]
+    rhyme_line_list = [line.replace(line.split()[0], line.split()[0].lower()) for line in rhyme_line_list]
+
+    # for line in rhyme_line_list:
         # line = line.replace(line.split()[0], line.split()[0].title())
-        line = line.replace('.','')
 
     return rhyme_line_list
 
@@ -498,12 +501,14 @@ def showSignUp():
 def signUp():
     # read the posted values from the UI
 
-    _story=request.form['inputName"+i+"']
+    _story=request.form['inputName']
     print _story
     # validate the received values
     if _story:
         # get list of rhyme lines from generate_lyrics(story)
         rhyme_line_list = generate_lyrics(_story)
+        print rhyme_line_list
+        # rhyme_line_list = [1, 2, 3, 4]
         # send lines to html for loading in dynamic dropdown 
         print "Populating dropdown, go ahead and click dropdown button"
         return jsonify(rhyme_line_list)
