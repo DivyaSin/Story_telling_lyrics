@@ -23,13 +23,13 @@ import PyPDF2
 # print pdf_content
 
 def markov():
-	with open('/Users/divyasingh/Documents/MABLE/women_in_computing.txt') as f:
+	with open('/Users/divyasingh/Documents/MABLE/Story_telling_lyrics/words/corpus/love_lyrics.txt') as f:
 		text = f.read()
-	reversed_lyrics = markovify.Text(text)
+	reversed_lyrics = markovify.NewlineText(text)
 	text_file = open('corpus/lyrics_batch.txt', 'w')  
 	for i in range(300):
 		# print i
-		sentence = reversed_lyrics.make_short_sentence(40)
+		sentence = reversed_lyrics.make_short_sentence(60)
 		# print sentence
 		if sentence:
 			text_file.write(sentence.translate(None, string.punctuation) + '.')

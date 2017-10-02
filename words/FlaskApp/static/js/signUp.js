@@ -1,27 +1,18 @@
 $(function() {
-	$("select").hide();
-	var form = $('#generateForm');
-	var i = $('#generateForm').size() + 1;
 	generateRhymes();
 });
 
 function generateRhymes(){
 	$("select").hide();
-	var content= $('#inputName').val();
-	console.log(content);
-	$('#btnSignUp').click(function() {
+	$('#btnSignUp').on("click", function() {
     	$.ajax({
         	url: '/signUp',
         	data: $('form').serialize(),
         	type: 'POST',
         	success: function(response) {
-        		console.log(response);
-        		// check if previous value is same as this value --> no need to check, my dropdown list should be different each time
-        		// if there is response then show dropdownlist after populating the list
 				populateDropdown(response);
         	},
         	error: function(error) {
-            	$("select").hide();
             	console.log(error);
         	}
     	});
@@ -40,38 +31,32 @@ function populateDropdown(response){
     	dropdownElement.value = dropdownValue;
     	selectOne.appendChild(dropdownElement);
 	}
-	$("select").show();
+	var lyricsDropdown = document.getElementById('states');
+	lyricsDropdown.style.display = '';
 	dropdownSelect();
 }
 
 function dropdownSelect(){
 	$("#states").change(function () {
-        // remove dropdown
-		removeDropdown($(this).val());
 		generateMoreOptions();
 	});
 }
 
-function removeDropdown(value){
-	// replace dropDown with editText containing the value
-	var figurativeLineTextBox = document.getElementById('figurativeLine');
-    figurativeLineTextBox.value = value;
-	$("#states").replaceWith(jQuery("#figurativeLine"));
-	$("button").hide();
-	figurativeLineTextBox.style.display = '';
-	// document.getElementById('btnSignUp').style.display= '';
-}
-
 function generateMoreOptions(){
-	$('<form class="form-inline" id = "generateForm"><div class="form-group"><label for="inputName" class="sr-only">Story line</label><input type="name" name="inputName" id='inputName"+i+"' class="form-control" placeholder =  "Next sentence of lyrics..." style="width: 300px; text-align: center" required autofocus="true"> </div><button id="btnSignUp" class = "btn btn-primary" style=" padding: 8px 15px;font-size: 14px" type="button">Generate</button><select name="states" id="states" style=" background-color: #3BB415; color: white; padding: 8px 15px; font-size: 14px; width: 300px"><option>Select One</option></select><div class="form-group"><label for="inputName" class="sr-only">Figurative line</label><input type="name" name="figurativeLine" id="figurativeLine" class="form-control" style = "width: 300px; display: none" required autofocus="true"></div></form>').appendTo(form);
-	i++;
-	generateRhymes();
-}
-
-
-
-
-
-
-
+	document.getElementById("inputName").placeholder = "next sentence of lyrics...";
+	var userInput = $('#inputName').val();
+	var dropdownValue = $('#states').val();
+	var table = document.getElementById("lyricsTable");
+	var row1 = table.insertRow(-1);
+	var row2 = table.insertRow(-1);
+	var cellrow1 = row1.insertCell(0);
+	var cellrow2 = row2.insertCell(0);
+	cellrow1.style.textAlign = 'center';
+	cellrow2.style.textAlign = 'center';
+	cellrow1.innerHTML = userInput;
+	cellrow2.innerHTML = dropdownValue;
+	document.getElementById('inputName').value = "";
+	$("select").hide();
+	$('#states').val() = '';
+}	
 
