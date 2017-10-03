@@ -101,7 +101,7 @@ def last_word(sentence):
 def getMarkovBatch():
     last_word_sentences = defaultdict(list)
     markov_lyrics.markov()
-    corpus_root = '/Users/divyasingh/Documents/MABLE'
+    corpus_root = './corpus/'
     wordlists = PlaintextCorpusReader(corpus_root, '.*')
     mega_sentences = (wordlists.sents('rape_corpus.txt'))
     if mega_sentences:

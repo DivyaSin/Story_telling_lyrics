@@ -23,7 +23,7 @@ import PyPDF2
 # print pdf_content
 
 def markov():
-	with open('/Users/divyasingh/Documents/MABLE/Story_telling_lyrics/words/corpus/love_lyrics.txt') as f:
+	with open('./corpus/love_lyrics.txt') as f:
 		text = f.read()
 	reversed_lyrics = markovify.NewlineText(text)
 	text_file = open('corpus/lyrics_batch.txt', 'w')  
