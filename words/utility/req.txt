@@ -1,0 +1,8 @@
+nltk
+unirest
+pronouncing
+fuzzywuzzy
+markovify
+PyPDF2
+python-Levenshtein
+

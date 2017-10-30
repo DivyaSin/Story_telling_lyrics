@@ -35,7 +35,7 @@ def last_word(sentence):
 def getMarkovBatch():
     last_word_sentences = defaultdict(list)
     markov_lyrics.markov()
-    corpus_root = '/Users/divyasingh/Documents/MABLE/Story_telling_lyrics/words/corpus'
+    corpus_root = './corpus'
     wordlists = PlaintextCorpusReader(corpus_root, '.*')
     mega_sentences = (wordlists.sents('lyrics_batch.txt'))
     if mega_sentences:
