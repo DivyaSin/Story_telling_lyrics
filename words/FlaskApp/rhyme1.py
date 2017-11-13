@@ -109,6 +109,7 @@ def getMarkovBatch():
     # print "#############################################"
     # print "#############################################"
     # print keys, last_word_sentences
+    print "getmarkovbatch running%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     return keys, last_word_sentences
 
 def candidate_sentences(word):

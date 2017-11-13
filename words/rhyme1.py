@@ -38,10 +38,11 @@ def getMarkovBatch():
     corpus_root = './corpus'
     wordlists = PlaintextCorpusReader(corpus_root, '.*')
     mega_sentences = (wordlists.sents('lyrics_batch.txt'))
+    print mega_sentences
     if mega_sentences:
         for sentence in mega_sentences:
             lw = last_word(sentence)
-            last_word_sentences[ lw ].append(sentence)
+            last_word_sentences[lw].append(sentence)
         keys = last_word_sentences.keys()
     else:
         getMarkovBatch()
@@ -388,8 +389,6 @@ def generate_lyrics(story):
             # print connected_line
             rhyme_lines.insert(line_no, rhyme_line)
             line_no += 1
-
-
     print "#### LYRICS ####"
     print ""
 
@@ -404,5 +403,5 @@ def generate_lyrics(story):
             pass
     print "################"
 
-story = "Wishing you were back. Thinking of only you."
+story = "The air is thick with yearning."
 generate_lyrics(story)

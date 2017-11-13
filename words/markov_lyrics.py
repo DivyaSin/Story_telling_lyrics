@@ -2,7 +2,6 @@ import random
 import markovify
 import string
 import pprint
-from sylco import sylco
 import PyPDF2
 
 # pdfFileObj = open('rape_corpus.pdf', 'rb')
